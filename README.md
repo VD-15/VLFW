@@ -1,6 +1,6 @@
 # VLFW
 
-VLFW is a C++ wrapper for the multi-platform window library, (GLFW)[https://www.glfw.org/] that allows it to integrate smoothly into a ValkyrieEngine project without exposing `glfw.h`.
+VLFW is a C++ wrapper for the multi-platform window library, [GLFW](https://www.glfw.org/) that allows it to integrate smoothly into a ValkyrieEngine project without exposing `glfw.h`.
 
 ## Creating a Window
 
@@ -41,7 +41,7 @@ hints.resizable = false;
 hints.openglProfile = OpenGLProfileType::Core;
 ```
 
-In order for VLFWMain to be able to see your window, you must construct it as a `vlk::Component<>` provided by (ValkyrieEngineCommon)[https://github.com/VD-15/ValkyrieEngineCommon]. Failure to do so will mean your window will not recieve eventsi, close or swap it's buffers.
+In order for VLFWMain to be able to see your window, you must construct it as a `vlk::Component<>` provided by [ValkyrieEngineCommon](https://github.com/VD-15/ValkyrieEngineCommon). Failure to do so will mean your window will not recieve eventsi, close or swap it's buffers.
 
 After that's done, start the main event loop and your window should function properly.
 
