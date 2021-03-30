@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['isbuttondown_63',['IsButtonDown',['../classvlk_1_1vlfw_1_1Mouse.html#ae520c5ddb4ddd706ae5e46a38e659f33',1,'vlk::vlfw::Mouse']]],
+  ['isbuttonpressed_64',['IsButtonPressed',['../classvlk_1_1vlfw_1_1Mouse.html#a45f37dcc8634cf9247919e5c239c13f7',1,'vlk::vlfw::Mouse']]],
+  ['isbuttonreleased_65',['IsButtonReleased',['../classvlk_1_1vlfw_1_1Mouse.html#afb7684b9a65a36f6b1c1af93ad0a5edf',1,'vlk::vlfw::Mouse']]],
+  ['isbuttonup_66',['IsButtonUp',['../classvlk_1_1vlfw_1_1Mouse.html#a34273bb216e3e7360b30a6a29e74b321',1,'vlk::vlfw::Mouse']]],
+  ['isdecorated_67',['IsDecorated',['../classvlk_1_1vlfw_1_1Window.html#a53e4825934d44ef543a42491a6263f50',1,'vlk::vlfw::Window']]],
+  ['isfocused_68',['IsFocused',['../classvlk_1_1vlfw_1_1Window.html#a1d5c09a29cd9aff705071c94da4b8a4c',1,'vlk::vlfw::Window']]],
+  ['isfocusonshow_69',['IsFocusOnShow',['../classvlk_1_1vlfw_1_1Window.html#a571d22612c4a0b8af6139fcba4bbfd86',1,'vlk::vlfw::Window']]],
+  ['ishovered_70',['IsHovered',['../classvlk_1_1vlfw_1_1Window.html#a3d1c95e60682163a1aab3924858776e9',1,'vlk::vlfw::Window']]],
+  ['iskeydown_71',['IsKeyDown',['../classvlk_1_1vlfw_1_1Keyboard.html#a32e79029eb1f54439621e85156368ed9',1,'vlk::vlfw::Keyboard::IsKeyDown(Int scancode)'],['../classvlk_1_1vlfw_1_1Keyboard.html#aa83028521d56999cbd76ddd65aa8457b',1,'vlk::vlfw::Keyboard::IsKeyDown(Key key)']]],
+  ['iskeypressed_72',['IsKeyPressed',['../classvlk_1_1vlfw_1_1Keyboard.html#a1b2360ed4dee702b9c3e80993ce2470c',1,'vlk::vlfw::Keyboard::IsKeyPressed(Int scancode)'],['../classvlk_1_1vlfw_1_1Keyboard.html#abab00ec06276348ee2cbca4fe9bc5c71',1,'vlk::vlfw::Keyboard::IsKeyPressed(Key key)']]],
+  ['iskeyreleased_73',['IsKeyReleased',['../classvlk_1_1vlfw_1_1Keyboard.html#a6c1b2c5bdc7d98ac9685264486cc12c1',1,'vlk::vlfw::Keyboard::IsKeyReleased(Int scancode)'],['../classvlk_1_1vlfw_1_1Keyboard.html#a76635a131fd0faec34b8ae478ae29702',1,'vlk::vlfw::Keyboard::IsKeyReleased(Key key)']]],
+  ['iskeyup_74',['IsKeyUp',['../classvlk_1_1vlfw_1_1Keyboard.html#ac5c1dc8e8ef44a8da0f8de8794507925',1,'vlk::vlfw::Keyboard::IsKeyUp(Int scancode)'],['../classvlk_1_1vlfw_1_1Keyboard.html#a97fc12818f11d5dfbc476d60c1c0fc43',1,'vlk::vlfw::Keyboard::IsKeyUp(Key key)']]],
+  ['ismaximized_75',['IsMaximized',['../classvlk_1_1vlfw_1_1Window.html#adacf95d50251241fd56251930f61d077',1,'vlk::vlfw::Window']]],
+  ['isminimized_76',['IsMinimized',['../classvlk_1_1vlfw_1_1Window.html#a790ae7dfd22aa4d8964b5428c51c8c1b',1,'vlk::vlfw::Window']]],
+  ['isminimizeonfocusloss_77',['IsMinimizeOnFocusLoss',['../classvlk_1_1vlfw_1_1Window.html#a071e9ed6d2131da72e29ddba7796b994',1,'vlk::vlfw::Window']]],
+  ['isnoerrorcontext_78',['IsNoErrorContext',['../classvlk_1_1vlfw_1_1Window.html#aee4259fbc3b30ec7b4e976f0d8471232',1,'vlk::vlfw::Window']]],
+  ['isopengldebug_79',['IsOpenGLDebug',['../classvlk_1_1vlfw_1_1Window.html#a8c7abd017551a20b6fb61c841a49c9a0',1,'vlk::vlfw::Window']]],
+  ['isopenglforwardcompatible_80',['IsOpenGLForwardCompatible',['../classvlk_1_1vlfw_1_1Window.html#a70a53b72463d1d84b9d3de7dfaf134a5',1,'vlk::vlfw::Window']]],
+  ['israwmouseinput_81',['IsRawMouseInput',['../classvlk_1_1vlfw_1_1Window.html#aea5a1f1f8d93209e3884b35ad7729c38',1,'vlk::vlfw::Window']]],
+  ['israwmouseinputsupported_82',['IsRawMouseInputSupported',['../classvlk_1_1vlfw_1_1Window.html#afbe52ba780fb8ff9de4572d5b0b74d3f',1,'vlk::vlfw::Window']]],
+  ['isresizable_83',['IsResizable',['../classvlk_1_1vlfw_1_1Window.html#ab401af06e7e8daa9c5472759a241c257',1,'vlk::vlfw::Window']]],
+  ['istopmost_84',['IsTopMost',['../classvlk_1_1vlfw_1_1Window.html#aee10899c2e2747e93dcbebdac9af6211',1,'vlk::vlfw::Window']]],
+  ['istransparent_85',['IsTransparent',['../classvlk_1_1vlfw_1_1Window.html#ae5f61746e235afd85178f9ac49b090a5',1,'vlk::vlfw::Window']]],
+  ['isvisible_86',['IsVisible',['../classvlk_1_1vlfw_1_1Window.html#ad2ea8494d39e4a56bfda30dbd789ab6d',1,'vlk::vlfw::Window']]]
+];

@@ -1,0 +1,40 @@
+\hypertarget{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent}{}\doxysection{vlk\+::vlfw\+::Window\+::Char\+Type\+Event Struct Reference}
+\label{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent}\index{vlk::vlfw::Window::CharTypeEvent@{vlk::vlfw::Window::CharTypeEvent}}
+
+
+Sent when a printable character is typed.  
+
+
+
+
+{\ttfamily \#include $<$Window.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent_a73b89c24468e8f987fc2323464e895b9}\label{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent_a73b89c24468e8f987fc2323464e895b9}} 
+const \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window}{Window}} $\ast$ \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent_a73b89c24468e8f987fc2323464e895b9}{window}}
+\begin{DoxyCompactList}\small\item\em The window object that recieved this event. \end{DoxyCompactList}\item 
+char32\+\_\+t \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent_a5067f4e552e720a70093e6c16220f746}{codepoint}}
+\begin{DoxyCompactList}\small\item\em UTF-\/32 codepoint for the typed character. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sent when a printable character is typed. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent_a5067f4e552e720a70093e6c16220f746}\label{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent_a5067f4e552e720a70093e6c16220f746}} 
+\index{vlk::vlfw::Window::CharTypeEvent@{vlk::vlfw::Window::CharTypeEvent}!codepoint@{codepoint}}
+\index{codepoint@{codepoint}!vlk::vlfw::Window::CharTypeEvent@{vlk::vlfw::Window::CharTypeEvent}}
+\doxysubsubsection{\texorpdfstring{codepoint}{codepoint}}
+{\footnotesize\ttfamily char32\+\_\+t vlk\+::vlfw\+::\+Window\+::\+Char\+Type\+Event\+::codepoint}
+
+
+
+UTF-\/32 codepoint for the typed character. 
+
+You can convert this to UTF-\/8 or UTF-\/16 using {\ttfamily std\+::codecvt} 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Window.\+hpp\end{DoxyCompactItemize}

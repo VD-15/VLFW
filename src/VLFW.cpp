@@ -11,8 +11,8 @@ using namespace vlfw;
 
 namespace
 {
-	std::mutex mtx;
 	std::vector<Monitor*> monitorRegistry;
+	std::mutex mtx;
 }
 
 void ErrorCallback(Int errorCode, const char* what)
@@ -44,18 +44,12 @@ void MonitorConnectedCallback(GLFWmonitor* monitor, Int event)
 	}
 }
 
-void WindowMoveCallback(GLFWwindow* window, Int x, Int y)
-{
-	Window* obj = reinterpret_cast<Window*>(glfwGetWindowUserPointer(window));
-	SendEvent(Window::MoveEvent({obj, Point<Int>(x, y)}));
-}
-
 VLFWMain::VLFWMain(const VLFWMainArgs& args) :
 	lock(mtx, std::try_to_lock)
 {
 	if (!lock.owns_lock())
 	{
-		throw std::runtime_error("Multiple concurrent instances of VLFWMain is disallowed.");
+		throw std::runtime_error("Multiple concurrent instances of VLFWMain are disallowed.");
 		return;
 	}
 	
@@ -89,14 +83,17 @@ VLFWMain::~VLFWMain()
 	glfwTerminate();
 }
 
-void VLFWMain::OnEvent(const vlk::PostUpdateEvent& ev)
+void VLFWMain::OnEvent(const vlk::PreUpdateEvent& ev)
 {
 	// Process Events
+	// TODO: find a way to expose event processing
+	// TODO: find a way to expose clipboard functionality
+	
 	if (waitMode == WaitMode::Poll)
 	{
 		glfwPollEvents();
 	}
-	else if (waitTimeout > 0)
+	else if (waitTimeout > 0.0)
 	{
 		glfwWaitEventsTimeout(waitTimeout);
 	}
@@ -104,7 +101,6 @@ void VLFWMain::OnEvent(const vlk::PostUpdateEvent& ev)
 	{
 		glfwWaitEvents();
 	}
-	
 
 	// Check close flags
 	std::vector<Component<Window>*> toClose;
@@ -112,7 +108,10 @@ void VLFWMain::OnEvent(const vlk::PostUpdateEvent& ev)
 	Component<Window>::ForEach([&toClose](Component<Window>* c)
 	{
 		c->SwapBuffers();
-		if (c->GetCloseFlag()) toClose.push_back(c);
+		if (c->GetCloseFlag())
+		{
+			toClose.push_back(c);
+		}
 	});
 
 	for (auto it = toClose.begin(); it != toClose.end(); it++)
@@ -130,6 +129,10 @@ void VLFWMain::SetSwapInterval(Int interval)
 {
 	glfwSwapInterval(interval);
 }
+
+/////////////////
+//// Monitor ////
+/////////////////
 
 Monitor::Monitor(MonitorHandle handle) :
 	nativeHandle(handle)

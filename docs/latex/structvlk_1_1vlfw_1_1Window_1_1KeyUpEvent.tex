@@ -1,0 +1,46 @@
+\hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent}{}\doxysection{vlk\+::vlfw\+::Window\+::Key\+Up\+Event Struct Reference}
+\label{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent}\index{vlk::vlfw::Window::KeyUpEvent@{vlk::vlfw::Window::KeyUpEvent}}
+
+
+Sent when a key is released.  
+
+
+
+
+{\ttfamily \#include $<$Window.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_a8811a3aecca7f506024b93cd545c36b6}\label{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_a8811a3aecca7f506024b93cd545c36b6}} 
+const \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window}{Window}} $\ast$ \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_a8811a3aecca7f506024b93cd545c36b6}{window}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window}{Window}} that recieved the event. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_a8d44fe27222b67728f56416235f36b15}\label{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_a8d44fe27222b67728f56416235f36b15}} 
+Key \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_a8d44fe27222b67728f56416235f36b15}{key}}
+\begin{DoxyCompactList}\small\item\em Key that was pressed, may be Key\+::\+Unknown. \end{DoxyCompactList}\item 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_ae7b76a84a6097591f8b359c2bc49b141}{scancode}}
+\begin{DoxyCompactList}\small\item\em Scancode of the key that was pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sent when a key is released. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_ae7b76a84a6097591f8b359c2bc49b141}\label{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent_ae7b76a84a6097591f8b359c2bc49b141}} 
+\index{vlk::vlfw::Window::KeyUpEvent@{vlk::vlfw::Window::KeyUpEvent}!scancode@{scancode}}
+\index{scancode@{scancode}!vlk::vlfw::Window::KeyUpEvent@{vlk::vlfw::Window::KeyUpEvent}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily Int vlk\+::vlfw\+::\+Window\+::\+Key\+Up\+Event\+::scancode}
+
+
+
+Scancode of the key that was pressed. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation\+:}
+The scancode is unique for every key, regardless of whether it has a key token. Scancodes are platform-\/specific but consistent over time, so keys will have different scancodes depending on the platform but they are safe to save to disk. 
+\end{DoxyParagraph}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Window.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,139 @@
+\hypertarget{structvlk_1_1vlfw_1_1WindowHints}{}\doxysection{vlk\+::vlfw\+::Window\+Hints Struct Reference}
+\label{structvlk_1_1vlfw_1_1WindowHints}\index{vlk::vlfw::WindowHints@{vlk::vlfw::WindowHints}}
+
+
+Struct containing various hints to influence the creation and initial state of a window object.  
+
+
+
+
+{\ttfamily \#include $<$Window.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a72d8a5374c8fe59f908283381bb49e46}\label{structvlk_1_1vlfw_1_1WindowHints_a72d8a5374c8fe59f908283381bb49e46}} 
+Point$<$ Int $>$ \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a72d8a5374c8fe59f908283381bb49e46}{size}} = Point$<$Int$>$(640, 480)
+\begin{DoxyCompactList}\small\item\em Desired size of the window, in screen coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a5eba17dfd637639d990d488faaa7f982}\label{structvlk_1_1vlfw_1_1WindowHints_a5eba17dfd637639d990d488faaa7f982}} 
+std\+::string \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a5eba17dfd637639d990d488faaa7f982}{title}} = u8\char`\"{}Valkyrie\+Engine Application\char`\"{}
+\begin{DoxyCompactList}\small\item\em Initial title of the window (UTF-\/8 encoded) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a724607594d6c7851834540bc23b22267}\label{structvlk_1_1vlfw_1_1WindowHints_a724607594d6c7851834540bc23b22267}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a724607594d6c7851834540bc23b22267}{resizable}} = true
+\begin{DoxyCompactList}\small\item\em Whether the window should be resizable by the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ae79b661a576a36644cc0644ac2a0f403}\label{structvlk_1_1vlfw_1_1WindowHints_ae79b661a576a36644cc0644ac2a0f403}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ae79b661a576a36644cc0644ac2a0f403}{visible}} = true
+\begin{DoxyCompactList}\small\item\em Whether the window should be visible when created. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a25e9d31ec7ae4e37037d392f3ee0f8f3}\label{structvlk_1_1vlfw_1_1WindowHints_a25e9d31ec7ae4e37037d392f3ee0f8f3}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a25e9d31ec7ae4e37037d392f3ee0f8f3}{decorated}} = true
+\begin{DoxyCompactList}\small\item\em Whether the window should have decorations such as a border and widgets. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a608616ff93654d7773383718e15b392c}\label{structvlk_1_1vlfw_1_1WindowHints_a608616ff93654d7773383718e15b392c}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a608616ff93654d7773383718e15b392c}{obey\+Content\+Scale}} = true
+\begin{DoxyCompactList}\small\item\em Whether the window should obey the content scale of the monitor it\textquotesingle{}s on. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_aca439902d6c559648cd9588a30550512}\label{structvlk_1_1vlfw_1_1WindowHints_aca439902d6c559648cd9588a30550512}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_aca439902d6c559648cd9588a30550512}{transparent}} = false
+\begin{DoxyCompactList}\small\item\em Whether the window should have a transparent framebuffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ad78c9cf9dfa46e614da6e6bc95e7951e}\label{structvlk_1_1vlfw_1_1WindowHints_ad78c9cf9dfa46e614da6e6bc95e7951e}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ad78c9cf9dfa46e614da6e6bc95e7951e}{top\+Most}} = false
+\begin{DoxyCompactList}\small\item\em Whether the window should be rendered on top of any other windows. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ab32cc31022ac0b8e0c0fd2f8ef1a7b80}\label{structvlk_1_1vlfw_1_1WindowHints_ab32cc31022ac0b8e0c0fd2f8ef1a7b80}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ab32cc31022ac0b8e0c0fd2f8ef1a7b80}{minimize\+On\+Focus\+Loss}} = false
+\begin{DoxyCompactList}\small\item\em Whether the window should be minimized when focus is lost. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ad4e5bb468ba3ae1c56e1e9ce455f3f68}\label{structvlk_1_1vlfw_1_1WindowHints_ad4e5bb468ba3ae1c56e1e9ce455f3f68}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ad4e5bb468ba3ae1c56e1e9ce455f3f68}{focus\+On\+Show}} = true
+\begin{DoxyCompactList}\small\item\em Whether the window should regain focus when \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae206b80ce3037d0b4d43ae80df9482f7}{Window\+::\+Show()}} is called. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a212fb8665a41cbd738edd0dedbd33f81}\label{structvlk_1_1vlfw_1_1WindowHints_a212fb8665a41cbd738edd0dedbd33f81}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a212fb8665a41cbd738edd0dedbd33f81}{focus\+On\+Create}} = true
+\begin{DoxyCompactList}\small\item\em Whether the window should be given focus when created. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a5a3183459e1329793160539dde3fc9c6}\label{structvlk_1_1vlfw_1_1WindowHints_a5a3183459e1329793160539dde3fc9c6}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a5a3183459e1329793160539dde3fc9c6}{maximize\+On\+Create}} = false
+\begin{DoxyCompactList}\small\item\em Whether the window should be maximized when created. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_acc26b9215aad8beb63ae6958abeba755}\label{structvlk_1_1vlfw_1_1WindowHints_acc26b9215aad8beb63ae6958abeba755}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_acc26b9215aad8beb63ae6958abeba755}{center\+Cursor\+On\+Create}} = false
+\begin{DoxyCompactList}\small\item\em Whether the cursoe should be centered on the window when created. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a5c4d1a1e0b59c79909f88a276ba3cbae}\label{structvlk_1_1vlfw_1_1WindowHints_a5c4d1a1e0b59c79909f88a276ba3cbae}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a5c4d1a1e0b59c79909f88a276ba3cbae}{framebuffer\+Red\+Bits}} = 8
+\begin{DoxyCompactList}\small\item\em Desired bit depth of the red channel of the default framebuffer or -\/1 for auto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ad2fd125003aad6a11bd8382e2f36546e}\label{structvlk_1_1vlfw_1_1WindowHints_ad2fd125003aad6a11bd8382e2f36546e}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ad2fd125003aad6a11bd8382e2f36546e}{framebuffer\+Green\+Bits}} = 8
+\begin{DoxyCompactList}\small\item\em Desired bit depth of the green channel of the default framebuffer or -\/1 for auto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a0d451921ef0146384ba35037dee09317}\label{structvlk_1_1vlfw_1_1WindowHints_a0d451921ef0146384ba35037dee09317}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a0d451921ef0146384ba35037dee09317}{framebuffer\+Blue\+Bits}} = 8
+\begin{DoxyCompactList}\small\item\em Desired bit depth of the blue channel of the default framebuffer or -\/1 for auto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ac7e7fee9699910b1f6c0f251e8dca6af}\label{structvlk_1_1vlfw_1_1WindowHints_ac7e7fee9699910b1f6c0f251e8dca6af}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ac7e7fee9699910b1f6c0f251e8dca6af}{framebuffer\+Alpha\+Bits}} = 8
+\begin{DoxyCompactList}\small\item\em Desired bit depth of the alpha channel of the default framebuffer or -\/1 for auto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ab4e069a7a374139ef7f7e103ea241102}\label{structvlk_1_1vlfw_1_1WindowHints_ab4e069a7a374139ef7f7e103ea241102}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ab4e069a7a374139ef7f7e103ea241102}{framebuffer\+Depth\+Bits}} = 24
+\begin{DoxyCompactList}\small\item\em Desired bit depth of the depth channel of the default framebuffer or -\/1 for auto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ada9c9296a7f7fc5bcb7445720de79b82}\label{structvlk_1_1vlfw_1_1WindowHints_ada9c9296a7f7fc5bcb7445720de79b82}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ada9c9296a7f7fc5bcb7445720de79b82}{framebuffer\+Stencil\+Bits}} = 8
+\begin{DoxyCompactList}\small\item\em Desired bit depth of the stencil channel of the default framebuffer or -\/1 for auto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_aa5cdcff278d97ed4c53f80d6eabb7c51}\label{structvlk_1_1vlfw_1_1WindowHints_aa5cdcff278d97ed4c53f80d6eabb7c51}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_aa5cdcff278d97ed4c53f80d6eabb7c51}{framebuffer\+Samples}} = 0
+\begin{DoxyCompactList}\small\item\em Desired number of samples per pizel for the default framebuffer or -\/1 for auto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_aac186f0721e26a7aadd59ee26d5ac473}\label{structvlk_1_1vlfw_1_1WindowHints_aac186f0721e26a7aadd59ee26d5ac473}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_aac186f0721e26a7aadd59ee26d5ac473}{enable\+SRGB}} = false
+\begin{DoxyCompactList}\small\item\em Whether the default framebuffer should be s\+RGB capable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_af73904f8b8ebe60ab70cba7b3a9850dc}\label{structvlk_1_1vlfw_1_1WindowHints_af73904f8b8ebe60ab70cba7b3a9850dc}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_af73904f8b8ebe60ab70cba7b3a9850dc}{enable\+Double\+Buffered}} = true
+\begin{DoxyCompactList}\small\item\em Whether the default framebuffer should be double-\/buffered. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a0051fb08c741938fd27e59fb8f13d451}\label{structvlk_1_1vlfw_1_1WindowHints_a0051fb08c741938fd27e59fb8f13d451}} 
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$ \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a0051fb08c741938fd27e59fb8f13d451}{monitor}} = nullptr
+\begin{DoxyCompactList}\small\item\em The monitor to use for fullscreen mode, or {\ttfamily nullptr} for windowed mode. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a2354ebdd56c0efb23d25fb4d7743ae71}\label{structvlk_1_1vlfw_1_1WindowHints_a2354ebdd56c0efb23d25fb4d7743ae71}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a2354ebdd56c0efb23d25fb4d7743ae71}{fullscreen\+Refresh\+Rate}} = -\/1
+\begin{DoxyCompactList}\small\item\em The refresh rate of the window in fullscreen mode, or -\/1 to match the monitor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a3b21472f1383612ab808b109afe2f258}\label{structvlk_1_1vlfw_1_1WindowHints_a3b21472f1383612ab808b109afe2f258}} 
+Client\+APIType \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a3b21472f1383612ab808b109afe2f258}{client\+API}} = Client\+APIType\+::\+Open\+GL
+\begin{DoxyCompactList}\small\item\em The client API to create a context for. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ad6fbf9bc383f4d7ccefc949255d2ad6a}\label{structvlk_1_1vlfw_1_1WindowHints_ad6fbf9bc383f4d7ccefc949255d2ad6a}} 
+Context\+APIType \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ad6fbf9bc383f4d7ccefc949255d2ad6a}{context\+API}} = Context\+APIType\+::\+Native
+\begin{DoxyCompactList}\small\item\em The context creation API used to generate the context. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a78a5486df131d826d2ee971d05fb03f1}\label{structvlk_1_1vlfw_1_1WindowHints_a78a5486df131d826d2ee971d05fb03f1}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a78a5486df131d826d2ee971d05fb03f1}{context\+Version\+Major}} = 1
+\begin{DoxyCompactList}\small\item\em The minimum required major version the context must conform to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a1a537cf34fcec108bb38fe8145147534}\label{structvlk_1_1vlfw_1_1WindowHints_a1a537cf34fcec108bb38fe8145147534}} 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a1a537cf34fcec108bb38fe8145147534}{context\+Version\+Minor}} = 0
+\begin{DoxyCompactList}\small\item\em The minimum required minor version the context must conform to. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a192c972368dfdb3881a1c21db86e685e}\label{structvlk_1_1vlfw_1_1WindowHints_a192c972368dfdb3881a1c21db86e685e}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a192c972368dfdb3881a1c21db86e685e}{no\+Error\+Context}} = false
+\begin{DoxyCompactList}\small\item\em Whether the context should not generate any errors. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_abdc20536fc925f1d6dc4e60071f5c585}\label{structvlk_1_1vlfw_1_1WindowHints_abdc20536fc925f1d6dc4e60071f5c585}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_abdc20536fc925f1d6dc4e60071f5c585}{enable\+Stereoscopy}} = false
+\begin{DoxyCompactList}\small\item\em Whether to enable Open\+GL stereoscopic rendering. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_aa3a93e1c0274ac865a25e6577f5aeede}\label{structvlk_1_1vlfw_1_1WindowHints_aa3a93e1c0274ac865a25e6577f5aeede}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_aa3a93e1c0274ac865a25e6577f5aeede}{opengl\+Forward\+Compatible}} = false
+\begin{DoxyCompactList}\small\item\em Whether to request a forward compatible Open\+GL context. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a7a625711066d356156617891070c52dc}\label{structvlk_1_1vlfw_1_1WindowHints_a7a625711066d356156617891070c52dc}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a7a625711066d356156617891070c52dc}{opengl\+Debug\+Context}} = false
+\begin{DoxyCompactList}\small\item\em Whether to request a debug Open\+GL context. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a853f109ba01139a2c38bb34f494dc830}\label{structvlk_1_1vlfw_1_1WindowHints_a853f109ba01139a2c38bb34f494dc830}} 
+Open\+GLProfile\+Type \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a853f109ba01139a2c38bb34f494dc830}{opengl\+Profile}} = Open\+GLProfile\+Type\+::\+Any
+\begin{DoxyCompactList}\small\item\em What Open\+GL profile to create the context for. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a164ebff33d8c28b0cf12404844ae4ad5}\label{structvlk_1_1vlfw_1_1WindowHints_a164ebff33d8c28b0cf12404844ae4ad5}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a164ebff33d8c28b0cf12404844ae4ad5}{macos\+Retina\+Framebuffer}} = true
+\begin{DoxyCompactList}\small\item\em Whether to use full resolution framebuffers on retina displays. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_af412f3919c77f4c4da3c929d59beb599}\label{structvlk_1_1vlfw_1_1WindowHints_af412f3919c77f4c4da3c929d59beb599}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_af412f3919c77f4c4da3c929d59beb599}{macos\+Auto\+Graphics\+Switch}} = false
+\begin{DoxyCompactList}\small\item\em Whether to allow the system to automatically switch graphics devices to save battery. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a8ffa42294b3f2acedebcf6cd3d8c6a20}\label{structvlk_1_1vlfw_1_1WindowHints_a8ffa42294b3f2acedebcf6cd3d8c6a20}} 
+std\+::string \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a8ffa42294b3f2acedebcf6cd3d8c6a20}{macos\+Frame\+Name}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em UTF-\/8 encoded name to use for autosaving the window frame, empty string disables. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a31bd3901406e812de05da95cf408864d}\label{structvlk_1_1vlfw_1_1WindowHints_a31bd3901406e812de05da95cf408864d}} 
+std\+::string \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a31bd3901406e812de05da95cf408864d}{x11\+Class\+Name}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em ASCII-\/encoded name for this window class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_ae83928e5a7fb9369f218e0db0b96d46e}\label{structvlk_1_1vlfw_1_1WindowHints_ae83928e5a7fb9369f218e0db0b96d46e}} 
+std\+::string \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_ae83928e5a7fb9369f218e0db0b96d46e}{x11\+Instance\+Name}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em ASCII-\/encoded name for this window instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1WindowHints_a33f540acc98b35e0d21029be44051889}\label{structvlk_1_1vlfw_1_1WindowHints_a33f540acc98b35e0d21029be44051889}} 
+bool \mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints_a33f540acc98b35e0d21029be44051889}{raise\+Stop\+On\+Close}} = true
+\begin{DoxyCompactList}\small\item\em Raise Valkyrie\+Engine\textquotesingle{}s stop flag when destroyed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Struct containing various hints to influence the creation and initial state of a window object. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Window.\+hpp\end{DoxyCompactItemize}

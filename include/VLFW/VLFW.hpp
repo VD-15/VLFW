@@ -16,6 +16,7 @@ namespace vlk
 {
 	namespace vlfw
 	{
+		//! Sent when GLFW generates an error
 		struct ErrorEvent
 		{
 			Int errorCode;
@@ -31,21 +32,37 @@ namespace vlk
 			Poll =           0x00000001
 		};
 
+		//! Arguments for VLFWMain
 		struct VLFWMainArgs
 		{
+			//! How to wait for incoming events
 			WaitMode waitMode = WaitMode::Poll;
+
+			//! Max timeout when waiting for events
 			Double waitTimeout = 0.0;
+
+			//! How many monitor refreshes should we wait to swap window buffers?
 			Int swapInterval = 0;
 		};
 
+		/*!
+		 * \brief Handles window-related events
+		 *
+		 * VLFWMain handles the initialization of GLFW and event processing
+		 * for any constructed window components. Only one instance of
+		 * VLFWMain may be constructed at once and various parts of VLFW will
+		 * not work without it, so you should construct one before doing
+		 * anything else.
+		 */
 		class VLFWMain : 
-			public EventListener<vlk::PostUpdateEvent>
+			public EventListener<vlk::PreUpdateEvent>
 		{
 			std::unique_lock<std::mutex> lock;
+
+			public:
 			Double waitTimeout;
 			WaitMode waitMode;
 
-			public:
 			inline VLFWMain() : VLFWMain(VLFWMainArgs{}) {}
 			VLFWMain(const VLFWMainArgs& args);
 			~VLFWMain();
@@ -55,7 +72,8 @@ namespace vlk
 			VLFWMain& operator=(const VLFWMain&) = delete;
 			VLFWMain& operator=(VLFWMain&&) = delete;
 
-			void OnEvent(const vlk::PostUpdateEvent& ev);
+			void OnEvent(const vlk::PreUpdateEvent& ev) override;
+
 			void SendEmptyEvent();
 			void SetSwapInterval(Int interval);
 		};

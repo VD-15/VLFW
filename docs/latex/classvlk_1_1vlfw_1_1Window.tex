@@ -1,0 +1,1022 @@
+\hypertarget{classvlk_1_1vlfw_1_1Window}{}\doxysection{vlk\+::vlfw\+::Window Class Reference}
+\label{classvlk_1_1vlfw_1_1Window}\index{vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1CharTypeEvent}{Char\+Type\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a printable character is typed. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1CloseEvent}{Close\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when the user attempts to close a window. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1ContentScaleChangeEvent}{Content\+Scale\+Change\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when the content scale of a window is changed. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1CursorEnterEvent}{Cursor\+Enter\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when the cursor enters the area of a window. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1CursorLeaveEvent}{Cursor\+Leave\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when the cursor enters the area of a window. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1FocusEvent}{Focus\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a window is focused or unfocused. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1FramebufferResizeEvent}{Framebuffer\+Resize\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a window\textquotesingle{}s default framebuffer is resized. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent}{Key\+Down\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a key is pressed. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent}{Key\+Repeat\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a pressed key is repeated by the system. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyUpEvent}{Key\+Up\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a key is released. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1MaximizeEvent}{Maximize\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a window enters or leaves a maximized state. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1MinimizeEvent}{Minimize\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a window is minimized. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1MouseButtonDownEvent}{Mouse\+Button\+Down\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a mouse button is pressed. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1MouseButtonUpEvent}{Mouse\+Button\+Up\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a mouse button is released. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1MouseMoveEvent}{Mouse\+Move\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when the mouse is moved over a window. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1MoveEvent}{Move\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a window is moved. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1RefreshEvent}{Refresh\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a window is refreshed. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1ResizeEvent}{Resize\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a window is resized. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1ScrollEvent}{Scroll\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when the user scrolls inside a window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a846c8ad9315b3240213b3aad9a5aae79}{Get\+Close\+Flag}} () const
+\begin{DoxyCompactList}\small\item\em Returns whether the close flag for this window has been raised. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a13409826f430d750a00e1aa6043d1c98}{Set\+Close\+Flag}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Raises or lowers the close flag for this window. \end{DoxyCompactList}\item 
+Point$<$ Int $>$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a4981a00e52288ae7dc6225ef5c83d443}{Get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Gets the size of this window in screen units. \end{DoxyCompactList}\item 
+Point$<$ Int $>$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ad260af1ceacd2633e035ed94e04e25be}{Get\+Framebuffer\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Gets the size of the window\textquotesingle{}s framebuffer in pixels. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_afb1a33babdaa8d1ab5820dd8866c7c46}{Get\+Decorated\+Size}} (Int $\ast$left, Int $\ast$top, Int $\ast$right, Int $\ast$bottom) const
+\begin{DoxyCompactList}\small\item\em Gets the size of each edge of this window\textquotesingle{}s frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a15ff7840f334ec1a7c8d07bfb2dfb7c5}{Set\+Size}} (const Point$<$ Int $>$ \&size)
+\begin{DoxyCompactList}\small\item\em Sets the size of the window. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aabbd1c72cafca139d5733fd5ab8baac5}{Get\+Content\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Gets the content scale of this window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ab71bacea1bf140f184cbfe25328bff04}{Set\+Size\+Limit}} (const Point$<$ Int $>$ \&min, const Point$<$ Int $>$ \&max)
+\begin{DoxyCompactList}\small\item\em Sets the minimum and maximum size limits of the window. \end{DoxyCompactList}\item 
+Point$<$ Int $>$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a063ce4a580531cfbf9eeb8e68c221959}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Gets the position of the window in screen coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a3fb2e00bd80e8505cef924f16f17548a}{Set\+Position}} (const Point$<$ Int $>$ \&pos)
+\begin{DoxyCompactList}\small\item\em Sets the position of the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a786ce3560240c525c443e984a50d9695}{Set\+Title}} (const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em Sets the title of the window. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a6e6c5ce01fec5438e5ec881f0f913102}{Get\+Monitor}} () const
+\begin{DoxyCompactList}\small\item\em Gets the monitor the window is fullscreen on. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a14431701b2d6538440fa5877b9644986}\label{classvlk_1_1vlfw_1_1Window_a14431701b2d6538440fa5877b9644986}} 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a14431701b2d6538440fa5877b9644986}{Set\+Monitor}} (\mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$monitor)
+\begin{DoxyCompactList}\small\item\em Makes the window fullscreen on a monitor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ad8d5749e8aeb7675a163455150b70ffc}{Set\+Monitor}} (\mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$monitor, const Area$<$ Int $>$ \&area, Int refresh\+Rate=-\/1)
+\begin{DoxyCompactList}\small\item\em Makes the window fullscreen on a monitor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_adacf95d50251241fd56251930f61d077}{Is\+Maximized}} () const
+\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a790ae7dfd22aa4d8964b5428c51c8c1b}{Is\+Minimized}} () const
+\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a5a141db5ae5b5b2bf7425b3718e0bab1}{Minimize}} ()
+\begin{DoxyCompactList}\small\item\em Minimizes the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a8385a5f123eeb183cca1a96505ab4b62}{Restore}} ()
+\begin{DoxyCompactList}\small\item\em Restores the window from a minimized or maximized state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a17fa703339524041dcad48ab0dfba71b}{Maximize}} ()
+\begin{DoxyCompactList}\small\item\em Maximizes the window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ad2ea8494d39e4a56bfda30dbd789ab6d}{Is\+Visible}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window is visible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae206b80ce3037d0b4d43ae80df9482f7}{Show}} ()
+\begin{DoxyCompactList}\small\item\em Makes an invisible window visible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_af05f1c89263175897f4504fd47e01081}{Hide}} ()
+\begin{DoxyCompactList}\small\item\em Makes a visible window invisible. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a1d5c09a29cd9aff705071c94da4b8a4c}{Is\+Focused}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window has focus. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ab5bed0b678049f87899a485b66efcffd}{Focus}} ()
+\begin{DoxyCompactList}\small\item\em Focus the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae4cbcb4c3e354bb53c83c3bf08b59006}{Notify}} ()
+\begin{DoxyCompactList}\small\item\em Request user attention to the window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae5f61746e235afd85178f9ac49b090a5}{Is\+Transparent}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window is transparent. \end{DoxyCompactList}\item 
+Float \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aef46452dd6a0f9a2dc036dea215b6bea}{Get\+Opacity}} () const
+\begin{DoxyCompactList}\small\item\em Gets the opacity of the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a210da9dafdee73dd4d3e6a2d19790404}{Set\+Opacity}} (Float opacity)
+\begin{DoxyCompactList}\small\item\em Sets the opacity of the window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ab401af06e7e8daa9c5472759a241c257}{Is\+Resizable}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window can be resized by the user. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a3d1c95e60682163a1aab3924858776e9}{Is\+Hovered}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the mouse is directly over the content area of the window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a53e4825934d44ef543a42491a6263f50}{Is\+Decorated}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window has border decorations. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a071e9ed6d2131da72e29ddba7796b994}{Is\+Minimize\+On\+Focus\+Loss}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window minimuzes when it loses focus. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aee10899c2e2747e93dcbebdac9af6211}{Is\+Top\+Most}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window is always on top of other windows. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a571d22612c4a0b8af6139fcba4bbfd86}{Is\+Focus\+On\+Show}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window regains focus when \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae206b80ce3037d0b4d43ae80df9482f7}{Show()}} is called. \end{DoxyCompactList}\item 
+Client\+APIType \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ad2b71820ed4e3e5329791820aa344cf1}{Get\+Client\+API}} () const
+\begin{DoxyCompactList}\small\item\em Gets the client API that was created for the window. \end{DoxyCompactList}\item 
+Context\+APIType \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a101f04ca996ac3bb3aca60762e6989d1}{Get\+Context\+API}} () const
+\begin{DoxyCompactList}\small\item\em Gets the API that was used to create the window\textquotesingle{}s context. \end{DoxyCompactList}\item 
+Open\+GLProfile\+Type \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a9053129c27f4ca9c6621b23b1e40b3e0}{Get\+Open\+GLProfile}} () const
+\begin{DoxyCompactList}\small\item\em Gets the Open\+GL profile used by the context. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a1612949e6068e8586acdd9fdf424361d}{Get\+Context\+Version}} (Int $\ast$major, Int $\ast$minor, Int $\ast$revision) const
+\begin{DoxyCompactList}\small\item\em Gets the version of the window\textquotesingle{}s context. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a70a53b72463d1d84b9d3de7dfaf134a5}{Is\+Open\+GLForward\+Compatible}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window\textquotesingle{}s Open\+GL context is forward compatible. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a8c7abd017551a20b6fb61c841a49c9a0}{Is\+Open\+GLDebug}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window\textquotesingle{}s Open\+GL context is a debug context. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aee4259fbc3b30ec7b4e976f0d8471232}{Is\+No\+Error\+Context}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window\textquotesingle{}s context does not raise errors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_abe1b83eda6980f2b9964aab08b5310ed}{Swap\+Buffers}} ()
+\begin{DoxyCompactList}\small\item\em Swaps the front and back buffers of the window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_afbe52ba780fb8ff9de4572d5b0b74d3f}{Is\+Raw\+Mouse\+Input\+Supported}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window can recieve raw mouse movement. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aea5a1f1f8d93209e3884b35ad7729c38}{Is\+Raw\+Mouse\+Input}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if the window is recieving raw mouse movement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a5463beb67c37da486aa8974525df7448}{Set\+Raw\+Mouse\+Input}} (bool raw\+Mouse\+Input)
+\begin{DoxyCompactList}\small\item\em Sets whether the window should recieve raw mouse movement. \end{DoxyCompactList}\item 
+Cursor\+Mode \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aa9ea58b4b396cf792937918df12f22ed}{Get\+Cursor\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Sets how the cursor should behave with the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a381073db19417a27018235b000af7795}{Set\+Cursor\+Mode}} (Cursor\+Mode mode)
+\begin{DoxyCompactList}\small\item\em Gets the cursor mode of the window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_af48fdb0e8c4ccee8e85697e4b5e7f884}{Reset\+Cursor}} ()
+\begin{DoxyCompactList}\small\item\em Sets the window\textquotesingle{}s cursor to the platform default. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a15565ab6cb345db1f349a0cf055c8c08}{Set\+Cursor}} (\mbox{\hyperlink{classvlk_1_1vlfw_1_1Cursor}{Cursor}} \&cursor)
+\begin{DoxyCompactList}\small\item\em Sets the window\textquotesingle{}s cursor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ab5bed0b678049f87899a485b66efcffd}\label{classvlk_1_1vlfw_1_1Window_ab5bed0b678049f87899a485b66efcffd}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!Focus@{Focus}}
+\index{Focus@{Focus}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{Focus()}{Focus()}}
+{\footnotesize\ttfamily void Window\+::\+Focus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Focus the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ad2b71820ed4e3e5329791820aa344cf1}\label{classvlk_1_1vlfw_1_1Window_ad2b71820ed4e3e5329791820aa344cf1}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetClientAPI@{GetClientAPI}}
+\index{GetClientAPI@{GetClientAPI}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetClientAPI()}{GetClientAPI()}}
+{\footnotesize\ttfamily Client\+APIType Window\+::\+Get\+Client\+API (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the client API that was created for the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints}{Window\+Hints}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a846c8ad9315b3240213b3aad9a5aae79}\label{classvlk_1_1vlfw_1_1Window_a846c8ad9315b3240213b3aad9a5aae79}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetCloseFlag@{GetCloseFlag}}
+\index{GetCloseFlag@{GetCloseFlag}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetCloseFlag()}{GetCloseFlag()}}
+{\footnotesize\ttfamily bool Window\+::\+Get\+Close\+Flag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns whether the close flag for this window has been raised. 
+
+The close flag is an indicator that the window should close at the nearest available oppertunity. \mbox{\hyperlink{classvlk_1_1vlfw_1_1VLFWMain}{VLFWMain}} will automatically close any windows with this flag raised at the beginning of the next frame if an instance has been constructed.
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a13409826f430d750a00e1aa6043d1c98}{Set\+Close\+Flag()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_aabbd1c72cafca139d5733fd5ab8baac5}\label{classvlk_1_1vlfw_1_1Window_aabbd1c72cafca139d5733fd5ab8baac5}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetContentScale@{GetContentScale}}
+\index{GetContentScale@{GetContentScale}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetContentScale()}{GetContentScale()}}
+{\footnotesize\ttfamily Vector2 Window\+::\+Get\+Content\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the content scale of this window. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation}
+This function retrieves the content scale for the specified window. The content scale is the ratio between the current DPI and the platform\textquotesingle{}s default DPI. This is especially important for text and any UI elements. If the pixel dimensions of your UI scaled by this look appropriate on your machine then it should appear at a reasonable size on other machines regardless of their DPI and scaling settings. This relies on the system DPI and scaling settings being somewhat correct. On systems where each monitors can have its own content scale, the window content scale will depend on which monitor the system considers the window to be on.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a101f04ca996ac3bb3aca60762e6989d1}\label{classvlk_1_1vlfw_1_1Window_a101f04ca996ac3bb3aca60762e6989d1}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetContextAPI@{GetContextAPI}}
+\index{GetContextAPI@{GetContextAPI}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetContextAPI()}{GetContextAPI()}}
+{\footnotesize\ttfamily Context\+APIType Window\+::\+Get\+Context\+API (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the API that was used to create the window\textquotesingle{}s context. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a1612949e6068e8586acdd9fdf424361d}\label{classvlk_1_1vlfw_1_1Window_a1612949e6068e8586acdd9fdf424361d}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetContextVersion@{GetContextVersion}}
+\index{GetContextVersion@{GetContextVersion}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetContextVersion()}{GetContextVersion()}}
+{\footnotesize\ttfamily void Window\+::\+Get\+Context\+Version (\begin{DoxyParamCaption}\item[{Int $\ast$}]{major,  }\item[{Int $\ast$}]{minor,  }\item[{Int $\ast$}]{revision }\end{DoxyParamCaption}) const}
+
+
+
+Gets the version of the window\textquotesingle{}s context. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_aa9ea58b4b396cf792937918df12f22ed}\label{classvlk_1_1vlfw_1_1Window_aa9ea58b4b396cf792937918df12f22ed}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetCursorMode@{GetCursorMode}}
+\index{GetCursorMode@{GetCursorMode}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetCursorMode()}{GetCursorMode()}}
+{\footnotesize\ttfamily Cursor\+Mode Window\+::\+Get\+Cursor\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Sets how the cursor should behave with the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_afb1a33babdaa8d1ab5820dd8866c7c46}\label{classvlk_1_1vlfw_1_1Window_afb1a33babdaa8d1ab5820dd8866c7c46}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetDecoratedSize@{GetDecoratedSize}}
+\index{GetDecoratedSize@{GetDecoratedSize}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetDecoratedSize()}{GetDecoratedSize()}}
+{\footnotesize\ttfamily void Window\+::\+Get\+Decorated\+Size (\begin{DoxyParamCaption}\item[{Int $\ast$}]{left,  }\item[{Int $\ast$}]{top,  }\item[{Int $\ast$}]{right,  }\item[{Int $\ast$}]{bottom }\end{DoxyParamCaption}) const}
+
+
+
+Gets the size of each edge of this window\textquotesingle{}s frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ad260af1ceacd2633e035ed94e04e25be}\label{classvlk_1_1vlfw_1_1Window_ad260af1ceacd2633e035ed94e04e25be}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetFramebufferSize@{GetFramebufferSize}}
+\index{GetFramebufferSize@{GetFramebufferSize}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetFramebufferSize()}{GetFramebufferSize()}}
+{\footnotesize\ttfamily Point$<$ Int $>$ Window\+::\+Get\+Framebuffer\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the size of the window\textquotesingle{}s framebuffer in pixels. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a6e6c5ce01fec5438e5ec881f0f913102}\label{classvlk_1_1vlfw_1_1Window_a6e6c5ce01fec5438e5ec881f0f913102}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetMonitor@{GetMonitor}}
+\index{GetMonitor@{GetMonitor}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetMonitor()}{GetMonitor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$ Window\+::\+Get\+Monitor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the monitor the window is fullscreen on. 
+
+Returns {\ttfamily nullptr} if the window is not fullscreen
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_aef46452dd6a0f9a2dc036dea215b6bea}\label{classvlk_1_1vlfw_1_1Window_aef46452dd6a0f9a2dc036dea215b6bea}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetOpacity@{GetOpacity}}
+\index{GetOpacity@{GetOpacity}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetOpacity()}{GetOpacity()}}
+{\footnotesize\ttfamily Float Window\+::\+Get\+Opacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the opacity of the window. 
+
+ALways returns {\ttfamily 1.\+0f} if the window is not transparent
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae5f61746e235afd85178f9ac49b090a5}{Is\+Transparent()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a210da9dafdee73dd4d3e6a2d19790404}{Set\+Opacity(\+Float)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a9053129c27f4ca9c6621b23b1e40b3e0}\label{classvlk_1_1vlfw_1_1Window_a9053129c27f4ca9c6621b23b1e40b3e0}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetOpenGLProfile@{GetOpenGLProfile}}
+\index{GetOpenGLProfile@{GetOpenGLProfile}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetOpenGLProfile()}{GetOpenGLProfile()}}
+{\footnotesize\ttfamily Open\+GLProfile\+Type Window\+::\+Get\+Open\+GLProfile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the Open\+GL profile used by the context. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a063ce4a580531cfbf9eeb8e68c221959}\label{classvlk_1_1vlfw_1_1Window_a063ce4a580531cfbf9eeb8e68c221959}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily Point$<$ Int $>$ Window\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the position of the window in screen coordinates. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a4981a00e52288ae7dc6225ef5c83d443}\label{classvlk_1_1vlfw_1_1Window_a4981a00e52288ae7dc6225ef5c83d443}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{GetSize()}{GetSize()}}
+{\footnotesize\ttfamily Point$<$ Int $>$ Window\+::\+Get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the size of this window in screen units. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a4981a00e52288ae7dc6225ef5c83d443}{Get\+Size()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_af05f1c89263175897f4504fd47e01081}\label{classvlk_1_1vlfw_1_1Window_af05f1c89263175897f4504fd47e01081}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!Hide@{Hide}}
+\index{Hide@{Hide}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{Hide()}{Hide()}}
+{\footnotesize\ttfamily void Window\+::\+Hide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Makes a visible window invisible. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a53e4825934d44ef543a42491a6263f50}\label{classvlk_1_1vlfw_1_1Window_a53e4825934d44ef543a42491a6263f50}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsDecorated@{IsDecorated}}
+\index{IsDecorated@{IsDecorated}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsDecorated()}{IsDecorated()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Decorated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window has border decorations. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a1d5c09a29cd9aff705071c94da4b8a4c}\label{classvlk_1_1vlfw_1_1Window_a1d5c09a29cd9aff705071c94da4b8a4c}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsFocused@{IsFocused}}
+\index{IsFocused@{IsFocused}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsFocused()}{IsFocused()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Focused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window has focus. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ab5bed0b678049f87899a485b66efcffd}{Focus()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a571d22612c4a0b8af6139fcba4bbfd86}\label{classvlk_1_1vlfw_1_1Window_a571d22612c4a0b8af6139fcba4bbfd86}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsFocusOnShow@{IsFocusOnShow}}
+\index{IsFocusOnShow@{IsFocusOnShow}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsFocusOnShow()}{IsFocusOnShow()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Focus\+On\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window regains focus when \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae206b80ce3037d0b4d43ae80df9482f7}{Show()}} is called. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a3d1c95e60682163a1aab3924858776e9}\label{classvlk_1_1vlfw_1_1Window_a3d1c95e60682163a1aab3924858776e9}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsHovered@{IsHovered}}
+\index{IsHovered@{IsHovered}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsHovered()}{IsHovered()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Hovered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the mouse is directly over the content area of the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_adacf95d50251241fd56251930f61d077}\label{classvlk_1_1vlfw_1_1Window_adacf95d50251241fd56251930f61d077}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsMaximized@{IsMaximized}}
+\index{IsMaximized@{IsMaximized}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsMaximized()}{IsMaximized()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Maximized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns true if the window is maximized
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a17fa703339524041dcad48ab0dfba71b}{Maximize()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a790ae7dfd22aa4d8964b5428c51c8c1b}\label{classvlk_1_1vlfw_1_1Window_a790ae7dfd22aa4d8964b5428c51c8c1b}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsMinimized@{IsMinimized}}
+\index{IsMinimized@{IsMinimized}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsMinimized()}{IsMinimized()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Minimized (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns true if the window is minimized
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a5a141db5ae5b5b2bf7425b3718e0bab1}{Minimize()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a071e9ed6d2131da72e29ddba7796b994}\label{classvlk_1_1vlfw_1_1Window_a071e9ed6d2131da72e29ddba7796b994}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsMinimizeOnFocusLoss@{IsMinimizeOnFocusLoss}}
+\index{IsMinimizeOnFocusLoss@{IsMinimizeOnFocusLoss}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsMinimizeOnFocusLoss()}{IsMinimizeOnFocusLoss()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Minimize\+On\+Focus\+Loss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window minimuzes when it loses focus. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_aee4259fbc3b30ec7b4e976f0d8471232}\label{classvlk_1_1vlfw_1_1Window_aee4259fbc3b30ec7b4e976f0d8471232}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsNoErrorContext@{IsNoErrorContext}}
+\index{IsNoErrorContext@{IsNoErrorContext}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsNoErrorContext()}{IsNoErrorContext()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+No\+Error\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window\textquotesingle{}s context does not raise errors. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a8c7abd017551a20b6fb61c841a49c9a0}\label{classvlk_1_1vlfw_1_1Window_a8c7abd017551a20b6fb61c841a49c9a0}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsOpenGLDebug@{IsOpenGLDebug}}
+\index{IsOpenGLDebug@{IsOpenGLDebug}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsOpenGLDebug()}{IsOpenGLDebug()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Open\+GLDebug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window\textquotesingle{}s Open\+GL context is a debug context. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a70a53b72463d1d84b9d3de7dfaf134a5}\label{classvlk_1_1vlfw_1_1Window_a70a53b72463d1d84b9d3de7dfaf134a5}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsOpenGLForwardCompatible@{IsOpenGLForwardCompatible}}
+\index{IsOpenGLForwardCompatible@{IsOpenGLForwardCompatible}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsOpenGLForwardCompatible()}{IsOpenGLForwardCompatible()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Open\+GLForward\+Compatible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window\textquotesingle{}s Open\+GL context is forward compatible. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_aea5a1f1f8d93209e3884b35ad7729c38}\label{classvlk_1_1vlfw_1_1Window_aea5a1f1f8d93209e3884b35ad7729c38}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsRawMouseInput@{IsRawMouseInput}}
+\index{IsRawMouseInput@{IsRawMouseInput}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsRawMouseInput()}{IsRawMouseInput()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Raw\+Mouse\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window is recieving raw mouse movement. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_afbe52ba780fb8ff9de4572d5b0b74d3f}{Is\+Raw\+Mouse\+Input\+Supported()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a5463beb67c37da486aa8974525df7448}{Set\+Raw\+Mouse\+Input(bool)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_afbe52ba780fb8ff9de4572d5b0b74d3f}\label{classvlk_1_1vlfw_1_1Window_afbe52ba780fb8ff9de4572d5b0b74d3f}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsRawMouseInputSupported@{IsRawMouseInputSupported}}
+\index{IsRawMouseInputSupported@{IsRawMouseInputSupported}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsRawMouseInputSupported()}{IsRawMouseInputSupported()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Raw\+Mouse\+Input\+Supported (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window can recieve raw mouse movement. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation}
+Raw mouse motion is closer to the actual motion of the mouse across a surface. It is not affected by the scaling and acceleration applied to the motion of the desktop cursor. That processing is suitable for a cursor while raw motion is better for controlling for example a 3D camera. Because of this, raw mouse motion is only provided when the cursor is disabled.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aea5a1f1f8d93209e3884b35ad7729c38}{Is\+Raw\+Mouse\+Input()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a5463beb67c37da486aa8974525df7448}{Set\+Raw\+Mouse\+Input(bool)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ab401af06e7e8daa9c5472759a241c257}\label{classvlk_1_1vlfw_1_1Window_ab401af06e7e8daa9c5472759a241c257}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsResizable@{IsResizable}}
+\index{IsResizable@{IsResizable}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsResizable()}{IsResizable()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Resizable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window can be resized by the user. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_aee10899c2e2747e93dcbebdac9af6211}\label{classvlk_1_1vlfw_1_1Window_aee10899c2e2747e93dcbebdac9af6211}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsTopMost@{IsTopMost}}
+\index{IsTopMost@{IsTopMost}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsTopMost()}{IsTopMost()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Top\+Most (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window is always on top of other windows. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ae5f61746e235afd85178f9ac49b090a5}\label{classvlk_1_1vlfw_1_1Window_ae5f61746e235afd85178f9ac49b090a5}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsTransparent@{IsTransparent}}
+\index{IsTransparent@{IsTransparent}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsTransparent()}{IsTransparent()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Transparent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window is transparent. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{structvlk_1_1vlfw_1_1WindowHints}{Window\+Hints}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aef46452dd6a0f9a2dc036dea215b6bea}{Get\+Opacity()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a210da9dafdee73dd4d3e6a2d19790404}{Set\+Opacity(\+Float)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ad2ea8494d39e4a56bfda30dbd789ab6d}\label{classvlk_1_1vlfw_1_1Window_ad2ea8494d39e4a56bfda30dbd789ab6d}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!IsVisible@{IsVisible}}
+\index{IsVisible@{IsVisible}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{IsVisible()}{IsVisible()}}
+{\footnotesize\ttfamily bool Window\+::\+Is\+Visible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the window is visible. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae206b80ce3037d0b4d43ae80df9482f7}{Show()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_af05f1c89263175897f4504fd47e01081}{Hide()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a17fa703339524041dcad48ab0dfba71b}\label{classvlk_1_1vlfw_1_1Window_a17fa703339524041dcad48ab0dfba71b}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!Maximize@{Maximize}}
+\index{Maximize@{Maximize}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{Maximize()}{Maximize()}}
+{\footnotesize\ttfamily void Window\+::\+Maximize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Maximizes the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_adacf95d50251241fd56251930f61d077}{Is\+Maximized()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a8385a5f123eeb183cca1a96505ab4b62}{Restore()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a5a141db5ae5b5b2bf7425b3718e0bab1}\label{classvlk_1_1vlfw_1_1Window_a5a141db5ae5b5b2bf7425b3718e0bab1}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!Minimize@{Minimize}}
+\index{Minimize@{Minimize}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{Minimize()}{Minimize()}}
+{\footnotesize\ttfamily void Window\+::\+Minimize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Minimizes the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a790ae7dfd22aa4d8964b5428c51c8c1b}{Is\+Minimized()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a8385a5f123eeb183cca1a96505ab4b62}{Restore()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ae4cbcb4c3e354bb53c83c3bf08b59006}\label{classvlk_1_1vlfw_1_1Window_ae4cbcb4c3e354bb53c83c3bf08b59006}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!Notify@{Notify}}
+\index{Notify@{Notify}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{Notify()}{Notify()}}
+{\footnotesize\ttfamily void Window\+::\+Notify (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Request user attention to the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_af48fdb0e8c4ccee8e85697e4b5e7f884}\label{classvlk_1_1vlfw_1_1Window_af48fdb0e8c4ccee8e85697e4b5e7f884}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!ResetCursor@{ResetCursor}}
+\index{ResetCursor@{ResetCursor}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{ResetCursor()}{ResetCursor()}}
+{\footnotesize\ttfamily void Window\+::\+Reset\+Cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets the window\textquotesingle{}s cursor to the platform default. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a8385a5f123eeb183cca1a96505ab4b62}\label{classvlk_1_1vlfw_1_1Window_a8385a5f123eeb183cca1a96505ab4b62}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!Restore@{Restore}}
+\index{Restore@{Restore}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{Restore()}{Restore()}}
+{\footnotesize\ttfamily void Window\+::\+Restore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Restores the window from a minimized or maximized state. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a790ae7dfd22aa4d8964b5428c51c8c1b}{Is\+Minimized()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_adacf95d50251241fd56251930f61d077}{Is\+Maximized()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a5a141db5ae5b5b2bf7425b3718e0bab1}{Minimize()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a17fa703339524041dcad48ab0dfba71b}{Maximize()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a13409826f430d750a00e1aa6043d1c98}\label{classvlk_1_1vlfw_1_1Window_a13409826f430d750a00e1aa6043d1c98}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetCloseFlag@{SetCloseFlag}}
+\index{SetCloseFlag@{SetCloseFlag}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetCloseFlag()}{SetCloseFlag()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Close\+Flag (\begin{DoxyParamCaption}\item[{bool}]{value = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Raises or lowers the close flag for this window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a846c8ad9315b3240213b3aad9a5aae79}{Get\+Close\+Flag()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a15565ab6cb345db1f349a0cf055c8c08}\label{classvlk_1_1vlfw_1_1Window_a15565ab6cb345db1f349a0cf055c8c08}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetCursor@{SetCursor}}
+\index{SetCursor@{SetCursor}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetCursor()}{SetCursor()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classvlk_1_1vlfw_1_1Cursor}{Cursor}} \&}]{cursor }\end{DoxyParamCaption})}
+
+
+
+Sets the window\textquotesingle{}s cursor. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a381073db19417a27018235b000af7795}\label{classvlk_1_1vlfw_1_1Window_a381073db19417a27018235b000af7795}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetCursorMode@{SetCursorMode}}
+\index{SetCursorMode@{SetCursorMode}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetCursorMode()}{SetCursorMode()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Cursor\+Mode (\begin{DoxyParamCaption}\item[{Cursor\+Mode}]{mode }\end{DoxyParamCaption})}
+
+
+
+Gets the cursor mode of the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ad8d5749e8aeb7675a163455150b70ffc}\label{classvlk_1_1vlfw_1_1Window_ad8d5749e8aeb7675a163455150b70ffc}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetMonitor@{SetMonitor}}
+\index{SetMonitor@{SetMonitor}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetMonitor()}{SetMonitor()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Monitor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$}]{monitor,  }\item[{const Area$<$ Int $>$ \&}]{area,  }\item[{Int}]{refresh\+Rate = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Makes the window fullscreen on a monitor. 
+
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a210da9dafdee73dd4d3e6a2d19790404}\label{classvlk_1_1vlfw_1_1Window_a210da9dafdee73dd4d3e6a2d19790404}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetOpacity@{SetOpacity}}
+\index{SetOpacity@{SetOpacity}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetOpacity()}{SetOpacity()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Opacity (\begin{DoxyParamCaption}\item[{Float}]{opacity }\end{DoxyParamCaption})}
+
+
+
+Sets the opacity of the window. 
+
+Does nothing if the window is not transparent
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ae5f61746e235afd85178f9ac49b090a5}{Is\+Transparent()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aef46452dd6a0f9a2dc036dea215b6bea}{Get\+Opacity()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a3fb2e00bd80e8505cef924f16f17548a}\label{classvlk_1_1vlfw_1_1Window_a3fb2e00bd80e8505cef924f16f17548a}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{const Point$<$ Int $>$ \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Sets the position of the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a5463beb67c37da486aa8974525df7448}\label{classvlk_1_1vlfw_1_1Window_a5463beb67c37da486aa8974525df7448}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetRawMouseInput@{SetRawMouseInput}}
+\index{SetRawMouseInput@{SetRawMouseInput}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetRawMouseInput()}{SetRawMouseInput()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Raw\+Mouse\+Input (\begin{DoxyParamCaption}\item[{bool}]{raw\+Mouse\+Input }\end{DoxyParamCaption})}
+
+
+
+Sets whether the window should recieve raw mouse movement. 
+
+This function does nothing if raw mouse input is not supported by the window.
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_aea5a1f1f8d93209e3884b35ad7729c38}{Is\+Raw\+Mouse\+Input()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_afbe52ba780fb8ff9de4572d5b0b74d3f}{Is\+Raw\+Mouse\+Input\+Supported()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a15ff7840f334ec1a7c8d07bfb2dfb7c5}\label{classvlk_1_1vlfw_1_1Window_a15ff7840f334ec1a7c8d07bfb2dfb7c5}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetSize@{SetSize}}
+\index{SetSize@{SetSize}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetSize()}{SetSize()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Size (\begin{DoxyParamCaption}\item[{const Point$<$ Int $>$ \&}]{size }\end{DoxyParamCaption})}
+
+
+
+Sets the size of the window. 
+
+This function does not take into account the size of any window decorations.
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a4981a00e52288ae7dc6225ef5c83d443}{Get\+Size()}}
+\end{DoxySeeAlso}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ab71bacea1bf140f184cbfe25328bff04}\label{classvlk_1_1vlfw_1_1Window_ab71bacea1bf140f184cbfe25328bff04}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetSizeLimit@{SetSizeLimit}}
+\index{SetSizeLimit@{SetSizeLimit}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetSizeLimit()}{SetSizeLimit()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Size\+Limit (\begin{DoxyParamCaption}\item[{const Point$<$ Int $>$ \&}]{min,  }\item[{const Point$<$ Int $>$ \&}]{max }\end{DoxyParamCaption})}
+
+
+
+Sets the minimum and maximum size limits of the window. 
+
+This function does not take into account the size of any window decorations.
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_a786ce3560240c525c443e984a50d9695}\label{classvlk_1_1vlfw_1_1Window_a786ce3560240c525c443e984a50d9695}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SetTitle@{SetTitle}}
+\index{SetTitle@{SetTitle}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SetTitle()}{SetTitle()}}
+{\footnotesize\ttfamily void Window\+::\+Set\+Title (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+Sets the title of the window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em title} & A UTF-\/8 encoded string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_ae206b80ce3037d0b4d43ae80df9482f7}\label{classvlk_1_1vlfw_1_1Window_ae206b80ce3037d0b4d43ae80df9482f7}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!Show@{Show}}
+\index{Show@{Show}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{Show()}{Show()}}
+{\footnotesize\ttfamily void Window\+::\+Show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Makes an invisible window visible. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_ad2ea8494d39e4a56bfda30dbd789ab6d}{Is\+Visible()}} 
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_af05f1c89263175897f4504fd47e01081}{Hide()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Window_abe1b83eda6980f2b9964aab08b5310ed}\label{classvlk_1_1vlfw_1_1Window_abe1b83eda6980f2b9964aab08b5310ed}} 
+\index{vlk::vlfw::Window@{vlk::vlfw::Window}!SwapBuffers@{SwapBuffers}}
+\index{SwapBuffers@{SwapBuffers}!vlk::vlfw::Window@{vlk::vlfw::Window}}
+\doxysubsubsection{\texorpdfstring{SwapBuffers()}{SwapBuffers()}}
+{\footnotesize\ttfamily void Window\+::\+Swap\+Buffers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Swaps the front and back buffers of the window. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Window.\+hpp\item 
+src/Window.\+cpp\end{DoxyCompactItemize}

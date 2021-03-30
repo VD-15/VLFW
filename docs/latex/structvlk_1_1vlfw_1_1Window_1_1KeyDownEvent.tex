@@ -1,0 +1,46 @@
+\hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent}{}\doxysection{vlk\+::vlfw\+::Window\+::Key\+Down\+Event Struct Reference}
+\label{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent}\index{vlk::vlfw::Window::KeyDownEvent@{vlk::vlfw::Window::KeyDownEvent}}
+
+
+Sent when a key is pressed.  
+
+
+
+
+{\ttfamily \#include $<$Window.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_a0385872483e19e66a411537452c3e8e1}\label{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_a0385872483e19e66a411537452c3e8e1}} 
+const \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window}{Window}} $\ast$ \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_a0385872483e19e66a411537452c3e8e1}{window}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window}{Window}} that recieved the event. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_a3ee6cadadac39782c7ae770f07a05a26}\label{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_a3ee6cadadac39782c7ae770f07a05a26}} 
+Key \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_a3ee6cadadac39782c7ae770f07a05a26}{key}}
+\begin{DoxyCompactList}\small\item\em Key that was pressed, may be Key\+::\+Unknown. \end{DoxyCompactList}\item 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_af7742b1c48c2e8fb18c165dfb023c019}{scancode}}
+\begin{DoxyCompactList}\small\item\em Scancode of the key that was pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sent when a key is pressed. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_af7742b1c48c2e8fb18c165dfb023c019}\label{structvlk_1_1vlfw_1_1Window_1_1KeyDownEvent_af7742b1c48c2e8fb18c165dfb023c019}} 
+\index{vlk::vlfw::Window::KeyDownEvent@{vlk::vlfw::Window::KeyDownEvent}!scancode@{scancode}}
+\index{scancode@{scancode}!vlk::vlfw::Window::KeyDownEvent@{vlk::vlfw::Window::KeyDownEvent}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily Int vlk\+::vlfw\+::\+Window\+::\+Key\+Down\+Event\+::scancode}
+
+
+
+Scancode of the key that was pressed. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation\+:}
+The scancode is unique for every key, regardless of whether it has a key token. Scancodes are platform-\/specific but consistent over time, so keys will have different scancodes depending on the platform but they are safe to save to disk. 
+\end{DoxyParagraph}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Window.\+hpp\end{DoxyCompactItemize}

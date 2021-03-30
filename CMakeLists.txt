@@ -9,6 +9,9 @@ project(VLFW VERSION 0.1.0)
 add_library(VLFW
     ${CMAKE_CURRENT_SOURCE_DIR}/src/VLFW.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Window.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Keyboard.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Mouse.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/Cursor.cpp
 )
 
 set_target_properties(

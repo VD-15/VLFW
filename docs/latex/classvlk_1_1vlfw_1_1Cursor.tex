@@ -1,0 +1,94 @@
+\hypertarget{classvlk_1_1vlfw_1_1Cursor}{}\doxysection{vlk\+::vlfw\+::Cursor Class Reference}
+\label{classvlk_1_1vlfw_1_1Cursor}\index{vlk::vlfw::Cursor@{vlk::vlfw::Cursor}}
+
+
+Hardware cursor wrapper class.  
+
+
+
+
+{\ttfamily \#include $<$Cursor.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Cursor_a5f16595e9d5c431c83a3471409d88ce3}{Cursor}} (Default\+Cursor\+Type type)
+\begin{DoxyCompactList}\small\item\em Creates a cursor object using the system\textquotesingle{}s cursor theme. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Cursor_ae1134068c2506cf86997cbc84f25aa8c}{Cursor}} (unsigned char $\ast$data, Point$<$ Int $>$ size, Point$<$ Int $>$ hotspot)
+\begin{DoxyCompactList}\small\item\em Creates a cursor with a custom image. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Cursor_a0375c99d5c45c7ca8f14ebd21c5029d2}{Get\+Handle}} ()
+\begin{DoxyCompactList}\small\item\em Gets the handle of the cursor object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Hardware cursor wrapper class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Cursor_a5f16595e9d5c431c83a3471409d88ce3}\label{classvlk_1_1vlfw_1_1Cursor_a5f16595e9d5c431c83a3471409d88ce3}} 
+\index{vlk::vlfw::Cursor@{vlk::vlfw::Cursor}!Cursor@{Cursor}}
+\index{Cursor@{Cursor}!vlk::vlfw::Cursor@{vlk::vlfw::Cursor}}
+\doxysubsubsection{\texorpdfstring{Cursor()}{Cursor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Cursor\+::\+Cursor (\begin{DoxyParamCaption}\item[{Default\+Cursor\+Type}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a cursor object using the system\textquotesingle{}s cursor theme. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Cursor_ae1134068c2506cf86997cbc84f25aa8c}\label{classvlk_1_1vlfw_1_1Cursor_ae1134068c2506cf86997cbc84f25aa8c}} 
+\index{vlk::vlfw::Cursor@{vlk::vlfw::Cursor}!Cursor@{Cursor}}
+\index{Cursor@{Cursor}!vlk::vlfw::Cursor@{vlk::vlfw::Cursor}}
+\doxysubsubsection{\texorpdfstring{Cursor()}{Cursor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Cursor\+::\+Cursor (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{Point$<$ Int $>$}]{size,  }\item[{Point$<$ Int $>$}]{hotspot }\end{DoxyParamCaption})}
+
+
+
+Creates a cursor with a custom image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & An array of non-\/premultiplied RGBA color values \\
+\hline
+{\em size} & The size, in pixels of the image \\
+\hline
+{\em hotspot} & The center of the image, measured from the top-\/left\\
+\hline
+\end{DoxyParams}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Cursor_a0375c99d5c45c7ca8f14ebd21c5029d2}\label{classvlk_1_1vlfw_1_1Cursor_a0375c99d5c45c7ca8f14ebd21c5029d2}} 
+\index{vlk::vlfw::Cursor@{vlk::vlfw::Cursor}!GetHandle@{GetHandle}}
+\index{GetHandle@{GetHandle}!vlk::vlfw::Cursor@{vlk::vlfw::Cursor}}
+\doxysubsubsection{\texorpdfstring{GetHandle()}{GetHandle()}}
+{\footnotesize\ttfamily void$\ast$ vlk\+::vlfw\+::\+Cursor\+::\+Get\+Handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the handle of the cursor object. 
+
+This handle is owned by GLFW and functions as a valid {\ttfamily GLFWcursor$\ast$} object should you want to use the library directly.
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Cursor.\+hpp\item 
+src/Cursor.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,201 @@
+\hypertarget{classvlk_1_1vlfw_1_1Keyboard}{}\doxysection{vlk\+::vlfw\+::Keyboard Class Reference}
+\label{classvlk_1_1vlfw_1_1Keyboard}\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+
+
+Static keyboard class.  
+
+
+
+
+{\ttfamily \#include $<$Keyboard.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Int \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_ae48c791847740ec009ce54b44cf4369c}{Get\+Key\+Scancode}} (Key key)
+\begin{DoxyCompactList}\small\item\em Gets the scancode of the given key. \end{DoxyCompactList}\item 
+static const std\+::string \& \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_a8b72ef6509082dd17dd76c1076426bd8}{Get\+Key\+Name}} (Key key)
+\begin{DoxyCompactList}\small\item\em Gets the human-\/readable name of the given key. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_a32e79029eb1f54439621e85156368ed9}{Is\+Key\+Down}} (Int scancode)
+\begin{DoxyCompactList}\small\item\em Returns true if the given key was held down at the start of the current frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_aa83028521d56999cbd76ddd65aa8457b}{Is\+Key\+Down}} (Key key)
+\begin{DoxyCompactList}\small\item\em Returns true if the given key was held down at the start of the current frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_ac5c1dc8e8ef44a8da0f8de8794507925}{Is\+Key\+Up}} (Int scancode)
+\begin{DoxyCompactList}\small\item\em Returns true if the given key was not held down at the start of the current frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_a97fc12818f11d5dfbc476d60c1c0fc43}{Is\+Key\+Up}} (Key key)
+\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_a1b2360ed4dee702b9c3e80993ce2470c}{Is\+Key\+Pressed}} (Int scancode)
+\begin{DoxyCompactList}\small\item\em Returns true if the given key was pressed some time during the last frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_abab00ec06276348ee2cbca4fe9bc5c71}{Is\+Key\+Pressed}} (Key key)
+\begin{DoxyCompactList}\small\item\em Returns true if the given key was pressed some time during the last frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_a6c1b2c5bdc7d98ac9685264486cc12c1}{Is\+Key\+Released}} (Int scancode)
+\begin{DoxyCompactList}\small\item\em Returns true if the given key was released some time during the last frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_a76635a131fd0faec34b8ae478ae29702}{Is\+Key\+Released}} (Key key)
+\begin{DoxyCompactList}\small\item\em Returns true if the given key was released some time during the last frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Static keyboard class. 
+
+Stores the states of keyboard keys. Keys that are pressed are guaranteed to have Is\+Key\+Pressed return true for exactly one frame, same with released keys and Is\+Key\+Released. Keys may be pressed and released on the same frame, but Is\+Key\+Down and Is\+Key\+Up will always accurately report the latest known state of the key. To use this class, one must first construct an instance of \mbox{\hyperlink{classvlk_1_1vlfw_1_1KeyboardMain}{Keyboard\+Main}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_a8b72ef6509082dd17dd76c1076426bd8}\label{classvlk_1_1vlfw_1_1Keyboard_a8b72ef6509082dd17dd76c1076426bd8}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!GetKeyName@{GetKeyName}}
+\index{GetKeyName@{GetKeyName}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{GetKeyName()}{GetKeyName()}}
+{\footnotesize\ttfamily const std\+::string \& Keyboard\+::\+Get\+Key\+Name (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the human-\/readable name of the given key. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_ae48c791847740ec009ce54b44cf4369c}\label{classvlk_1_1vlfw_1_1Keyboard_ae48c791847740ec009ce54b44cf4369c}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!GetKeyScancode@{GetKeyScancode}}
+\index{GetKeyScancode@{GetKeyScancode}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{GetKeyScancode()}{GetKeyScancode()}}
+{\footnotesize\ttfamily Int Keyboard\+::\+Get\+Key\+Scancode (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the scancode of the given key. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation}
+The scancode is unique for every key, regardless of whether it has a key token. Scancodes are platform-\/specific but consistent over time, so keys will have different scancodes depending on the platform but they are safe to save to disk.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_a32e79029eb1f54439621e85156368ed9}\label{classvlk_1_1vlfw_1_1Keyboard_a32e79029eb1f54439621e85156368ed9}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyDown@{IsKeyDown}}
+\index{IsKeyDown@{IsKeyDown}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyDown()}{IsKeyDown()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Keyboard\+::\+Is\+Key\+Down (\begin{DoxyParamCaption}\item[{Int}]{scancode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given key was held down at the start of the current frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_aa83028521d56999cbd76ddd65aa8457b}\label{classvlk_1_1vlfw_1_1Keyboard_aa83028521d56999cbd76ddd65aa8457b}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyDown@{IsKeyDown}}
+\index{IsKeyDown@{IsKeyDown}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyDown()}{IsKeyDown()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static bool vlk\+::vlfw\+::\+Keyboard\+::\+Is\+Key\+Down (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns true if the given key was held down at the start of the current frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_a1b2360ed4dee702b9c3e80993ce2470c}\label{classvlk_1_1vlfw_1_1Keyboard_a1b2360ed4dee702b9c3e80993ce2470c}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyPressed@{IsKeyPressed}}
+\index{IsKeyPressed@{IsKeyPressed}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyPressed()}{IsKeyPressed()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Keyboard\+::\+Is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{Int}]{scancode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given key was pressed some time during the last frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_abab00ec06276348ee2cbca4fe9bc5c71}\label{classvlk_1_1vlfw_1_1Keyboard_abab00ec06276348ee2cbca4fe9bc5c71}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyPressed@{IsKeyPressed}}
+\index{IsKeyPressed@{IsKeyPressed}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyPressed()}{IsKeyPressed()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static bool vlk\+::vlfw\+::\+Keyboard\+::\+Is\+Key\+Pressed (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns true if the given key was pressed some time during the last frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_a6c1b2c5bdc7d98ac9685264486cc12c1}\label{classvlk_1_1vlfw_1_1Keyboard_a6c1b2c5bdc7d98ac9685264486cc12c1}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyReleased@{IsKeyReleased}}
+\index{IsKeyReleased@{IsKeyReleased}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyReleased()}{IsKeyReleased()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Keyboard\+::\+Is\+Key\+Released (\begin{DoxyParamCaption}\item[{Int}]{scancode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given key was released some time during the last frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_a76635a131fd0faec34b8ae478ae29702}\label{classvlk_1_1vlfw_1_1Keyboard_a76635a131fd0faec34b8ae478ae29702}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyReleased@{IsKeyReleased}}
+\index{IsKeyReleased@{IsKeyReleased}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyReleased()}{IsKeyReleased()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static bool vlk\+::vlfw\+::\+Keyboard\+::\+Is\+Key\+Released (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns true if the given key was released some time during the last frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_ac5c1dc8e8ef44a8da0f8de8794507925}\label{classvlk_1_1vlfw_1_1Keyboard_ac5c1dc8e8ef44a8da0f8de8794507925}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyUp@{IsKeyUp}}
+\index{IsKeyUp@{IsKeyUp}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyUp()}{IsKeyUp()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Keyboard\+::\+Is\+Key\+Up (\begin{DoxyParamCaption}\item[{Int}]{scancode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given key was not held down at the start of the current frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Keyboard_a97fc12818f11d5dfbc476d60c1c0fc43}\label{classvlk_1_1vlfw_1_1Keyboard_a97fc12818f11d5dfbc476d60c1c0fc43}} 
+\index{vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}!IsKeyUp@{IsKeyUp}}
+\index{IsKeyUp@{IsKeyUp}!vlk::vlfw::Keyboard@{vlk::vlfw::Keyboard}}
+\doxysubsubsection{\texorpdfstring{IsKeyUp()}{IsKeyUp()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static bool vlk\+::vlfw\+::\+Keyboard\+::\+Is\+Key\+Up (\begin{DoxyParamCaption}\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\textbackslash{}copycod \mbox{\hyperlink{classvlk_1_1vlfw_1_1Keyboard_ac5c1dc8e8ef44a8da0f8de8794507925}{Is\+Key\+Up(\+Int)}} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Keyboard.\+hpp\item 
+src/Keyboard.\+cpp\end{DoxyCompactItemize}

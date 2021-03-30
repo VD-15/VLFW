@@ -1,0 +1,296 @@
+\hypertarget{classvlk_1_1vlfw_1_1Monitor}{}\doxysection{vlk\+::vlfw\+::Monitor Class Reference}
+\label{classvlk_1_1vlfw_1_1Monitor}\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+
+
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} wrapper class.  
+
+
+
+
+{\ttfamily \#include $<$Monitor.\+hpp$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Monitor_1_1ConnectEvent}{Connect\+Event}}
+\begin{DoxyCompactList}\small\item\em Sent when a monitor is connected to the system. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structvlk_1_1vlfw_1_1Monitor_1_1DisconnectEvent}{Disconnect\+Event}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a1e4472fff89e5e52b5a3845941cbac57}{Get\+Handle}} ()
+\begin{DoxyCompactList}\small\item\em Returns a handle to the underlying monitor object. \end{DoxyCompactList}\item 
+Point$<$ Int $>$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a063dc4ac6cc6cf6317fdabaad30bdb7a}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Gets the position of the monitor in screen coordinates. \end{DoxyCompactList}\item 
+Point$<$ Int $>$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a768ca3f19ed50bffec11dd57b23cef0b}{Get\+Physical\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Gets the physical size of the monitor in millimeters. \end{DoxyCompactList}\item 
+Vector2 \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_aefdedb2b88c883282777ebc51369b459}{Get\+Content\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em Gets the content scale of the monitor. \end{DoxyCompactList}\item 
+Area$<$ Int $>$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a6f26479874f049edffb4018cf1f5afa3}{Get\+Working\+Area}} () const
+\begin{DoxyCompactList}\small\item\em Gets the available working area of the monitor in screen coordinates. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_aff029c247e5bcaf6042a1f2f54690a5c}{Get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the human-\/readable name of the monitor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a65f2a7e22ff17bb16166116d8a8700a9}{Set\+Gamma}} (double gamma)
+\begin{DoxyCompactList}\small\item\em Sets the gamma exponent of the monitor. \end{DoxyCompactList}\item 
+const std\+::vector$<$ Color $>$ \& \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a5d192bb15a85276bf12566979f2861c6}{Get\+Gamma\+Ramp}} () const
+\begin{DoxyCompactList}\small\item\em Gets the gamma ramp of the monitor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_aac9c04207b687a8e08c659c221054ddf}{Set\+Gamma\+Ramp}} (const std\+::vector$<$ Color $>$ \&ramp)
+\begin{DoxyCompactList}\small\item\em Sets the full gamma ramp of the monitor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structvlk_1_1vlfw_1_1VideoMode}{Video\+Mode}} \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_aa39a773bda3d1bc7efdb860875168666}{Get\+Video\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current output mode of the monitor. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{structvlk_1_1vlfw_1_1VideoMode}{Video\+Mode}} $>$ \& \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a9f88bdbda209e2446a7f4ee31dcbf214}{Get\+Supported\+Video\+Modes}} () const
+\begin{DoxyCompactList}\small\item\em Gets all supported output modes of the monitor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_af0d97f731711ee64e47783b80550fd63}{Get\+Primary\+Monitor}} ()
+\begin{DoxyCompactList}\small\item\em Returns the user\textquotesingle{}s preferred monitor. \end{DoxyCompactList}\item 
+static Int \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_ae71651d1dc59bee31af4b0463b650633}{Get\+Monitor\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Returns the number of currently connected monitors. \end{DoxyCompactList}\item 
+static const std\+::vector$<$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$ $>$ \& \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_ac1ae3be946fe05a9526f20e0c697874b}{Get\+Monitors}} ()
+\begin{DoxyCompactList}\small\item\em Returns every currently connected monitor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} wrapper class. 
+
+Certain functions of this class require an instance of \mbox{\hyperlink{classvlk_1_1vlfw_1_1VLFWMain}{VLFWMain}} to be constructed prior in order to function properly. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_aefdedb2b88c883282777ebc51369b459}\label{classvlk_1_1vlfw_1_1Monitor_aefdedb2b88c883282777ebc51369b459}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetContentScale@{GetContentScale}}
+\index{GetContentScale@{GetContentScale}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetContentScale()}{GetContentScale()}}
+{\footnotesize\ttfamily Vector2 Monitor\+::\+Get\+Content\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the content scale of the monitor. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation}
+This function retrieves the content scale for the specified monitor. The content scale is the ratio between the current DPI and the platform\textquotesingle{}s default DPI. This is especially important for text and any UI elements. If the pixel dimensions of your UI scaled by this look appropriate on your machine then it should appear at a reasonable size on other machines regardless of their DPI and scaling settings. This relies on the system DPI and scaling settings being somewhat correct. The content scale may depend on both the monitor resolution and pixel density and on user settings. It may be very different from the raw DPI calculated from the physical size and current resolution.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_a5d192bb15a85276bf12566979f2861c6}\label{classvlk_1_1vlfw_1_1Monitor_a5d192bb15a85276bf12566979f2861c6}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetGammaRamp@{GetGammaRamp}}
+\index{GetGammaRamp@{GetGammaRamp}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetGammaRamp()}{GetGammaRamp()}}
+{\footnotesize\ttfamily const std\+::vector$<$Color$>$\& vlk\+::vlfw\+::\+Monitor\+::\+Get\+Gamma\+Ramp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the gamma ramp of the monitor. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_a1e4472fff89e5e52b5a3845941cbac57}\label{classvlk_1_1vlfw_1_1Monitor_a1e4472fff89e5e52b5a3845941cbac57}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetHandle@{GetHandle}}
+\index{GetHandle@{GetHandle}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetHandle()}{GetHandle()}}
+{\footnotesize\ttfamily void$\ast$ vlk\+::vlfw\+::\+Monitor\+::\+Get\+Handle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a handle to the underlying monitor object. 
+
+This handle is owned by GLFW and functions as a valid {\ttfamily GLFWmonitor$\ast$} object should you want to use the library directly. \mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_ae71651d1dc59bee31af4b0463b650633}\label{classvlk_1_1vlfw_1_1Monitor_ae71651d1dc59bee31af4b0463b650633}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetMonitorCount@{GetMonitorCount}}
+\index{GetMonitorCount@{GetMonitorCount}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetMonitorCount()}{GetMonitorCount()}}
+{\footnotesize\ttfamily Int Monitor\+::\+Get\+Monitor\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the number of currently connected monitors. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_ac1ae3be946fe05a9526f20e0c697874b}\label{classvlk_1_1vlfw_1_1Monitor_ac1ae3be946fe05a9526f20e0c697874b}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetMonitors@{GetMonitors}}
+\index{GetMonitors@{GetMonitors}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetMonitors()}{GetMonitors()}}
+{\footnotesize\ttfamily const std\+::vector$<$ \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$ $>$ \& Monitor\+::\+Get\+Monitors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns every currently connected monitor. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_aff029c247e5bcaf6042a1f2f54690a5c}\label{classvlk_1_1vlfw_1_1Monitor_aff029c247e5bcaf6042a1f2f54690a5c}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetName@{GetName}}
+\index{GetName@{GetName}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily std\+::string Monitor\+::\+Get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the human-\/readable name of the monitor. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation}
+This function returns a human-\/readable name, encoded as UTF-\/8, of the specified monitor. The name typically reflects the make and model of the monitor and is not guaranteed to be unique among the connected monitors.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_a768ca3f19ed50bffec11dd57b23cef0b}\label{classvlk_1_1vlfw_1_1Monitor_a768ca3f19ed50bffec11dd57b23cef0b}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetPhysicalSize@{GetPhysicalSize}}
+\index{GetPhysicalSize@{GetPhysicalSize}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetPhysicalSize()}{GetPhysicalSize()}}
+{\footnotesize\ttfamily Point$<$ Int $>$ Monitor\+::\+Get\+Physical\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the physical size of the monitor in millimeters. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_a063dc4ac6cc6cf6317fdabaad30bdb7a}\label{classvlk_1_1vlfw_1_1Monitor_a063dc4ac6cc6cf6317fdabaad30bdb7a}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily Point$<$ Int $>$ Monitor\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the position of the monitor in screen coordinates. 
+
+The returned point is the distance between the top-\/left corner of the primary monitor to the top-\/left corner of this monitor \mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_af0d97f731711ee64e47783b80550fd63}\label{classvlk_1_1vlfw_1_1Monitor_af0d97f731711ee64e47783b80550fd63}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetPrimaryMonitor@{GetPrimaryMonitor}}
+\index{GetPrimaryMonitor@{GetPrimaryMonitor}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetPrimaryMonitor()}{GetPrimaryMonitor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor}{Monitor}} $\ast$ Monitor\+::\+Get\+Primary\+Monitor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns the user\textquotesingle{}s preferred monitor. 
+
+The returned pointer is owned by \mbox{\hyperlink{classvlk_1_1vlfw_1_1VLFWMain}{VLFWMain}}
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_a9f88bdbda209e2446a7f4ee31dcbf214}\label{classvlk_1_1vlfw_1_1Monitor_a9f88bdbda209e2446a7f4ee31dcbf214}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetSupportedVideoModes@{GetSupportedVideoModes}}
+\index{GetSupportedVideoModes@{GetSupportedVideoModes}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetSupportedVideoModes()}{GetSupportedVideoModes()}}
+{\footnotesize\ttfamily const std\+::vector$<$\mbox{\hyperlink{structvlk_1_1vlfw_1_1VideoMode}{Video\+Mode}}$>$\& vlk\+::vlfw\+::\+Monitor\+::\+Get\+Supported\+Video\+Modes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets all supported output modes of the monitor. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_aa39a773bda3d1bc7efdb860875168666}\label{classvlk_1_1vlfw_1_1Monitor_aa39a773bda3d1bc7efdb860875168666}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetVideoMode@{GetVideoMode}}
+\index{GetVideoMode@{GetVideoMode}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetVideoMode()}{GetVideoMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structvlk_1_1vlfw_1_1VideoMode}{Video\+Mode}} Monitor\+::\+Get\+Video\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the current output mode of the monitor. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_a6f26479874f049edffb4018cf1f5afa3}\label{classvlk_1_1vlfw_1_1Monitor_a6f26479874f049edffb4018cf1f5afa3}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!GetWorkingArea@{GetWorkingArea}}
+\index{GetWorkingArea@{GetWorkingArea}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{GetWorkingArea()}{GetWorkingArea()}}
+{\footnotesize\ttfamily Area$<$ Int $>$ Monitor\+::\+Get\+Working\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the available working area of the monitor in screen coordinates. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation}
+The work area is defined as the area of the monitor not occluded by the operating system task bar where present. If no task bar exists then the work area is the monitor resolution in screen coordinates.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_a65f2a7e22ff17bb16166116d8a8700a9}\label{classvlk_1_1vlfw_1_1Monitor_a65f2a7e22ff17bb16166116d8a8700a9}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!SetGamma@{SetGamma}}
+\index{SetGamma@{SetGamma}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{SetGamma()}{SetGamma()}}
+{\footnotesize\ttfamily void Monitor\+::\+Set\+Gamma (\begin{DoxyParamCaption}\item[{double}]{gamma }\end{DoxyParamCaption})}
+
+
+
+Sets the gamma exponent of the monitor. 
+
+This function auto-\/generates a gamma ramp from the specified exponent value and applies it to the monitor. More granular gamma control can be achieved through \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_aac9c04207b687a8e08c659c221054ddf}{Set\+Gamma\+Ramp()}}
+
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Monitor_aac9c04207b687a8e08c659c221054ddf}\label{classvlk_1_1vlfw_1_1Monitor_aac9c04207b687a8e08c659c221054ddf}} 
+\index{vlk::vlfw::Monitor@{vlk::vlfw::Monitor}!SetGammaRamp@{SetGammaRamp}}
+\index{SetGammaRamp@{SetGammaRamp}!vlk::vlfw::Monitor@{vlk::vlfw::Monitor}}
+\doxysubsubsection{\texorpdfstring{SetGammaRamp()}{SetGammaRamp()}}
+{\footnotesize\ttfamily void Monitor\+::\+Set\+Gamma\+Ramp (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ Color $>$ \&}]{ramp }\end{DoxyParamCaption})}
+
+
+
+Sets the full gamma ramp of the monitor. 
+
+For best results, this gamma ramp should have the same length as that initially returned by \mbox{\hyperlink{classvlk_1_1vlfw_1_1Monitor_a5d192bb15a85276bf12566979f2861c6}{Get\+Gamma\+Ramp()}}.
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation}
+The software controlled gamma ramp is applied in addition to the hardware gamma correction, which today is usually an approximation of s\+RGB gamma. This means that setting a perfectly linear ramp, or gamma 1.\+0, will produce the default (usually s\+RGB-\/like) behavior.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Thread Safety}
+This function must only be called from the main thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Monitor.\+hpp\item 
+src/VLFW.\+cpp\end{DoxyCompactItemize}

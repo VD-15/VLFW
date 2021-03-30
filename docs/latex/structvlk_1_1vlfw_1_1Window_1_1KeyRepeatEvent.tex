@@ -1,0 +1,46 @@
+\hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent}{}\doxysection{vlk\+::vlfw\+::Window\+::Key\+Repeat\+Event Struct Reference}
+\label{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent}\index{vlk::vlfw::Window::KeyRepeatEvent@{vlk::vlfw::Window::KeyRepeatEvent}}
+
+
+Sent when a pressed key is repeated by the system.  
+
+
+
+
+{\ttfamily \#include $<$Window.\+hpp$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a0a061501d4dec42a2f676efe3e57ff72}\label{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a0a061501d4dec42a2f676efe3e57ff72}} 
+const \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window}{Window}} $\ast$ \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a0a061501d4dec42a2f676efe3e57ff72}{window}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classvlk_1_1vlfw_1_1Window}{Window}} that recieved the event. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a454c24d046bd46d8b76af97f00b0725a}\label{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a454c24d046bd46d8b76af97f00b0725a}} 
+Key \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a454c24d046bd46d8b76af97f00b0725a}{key}}
+\begin{DoxyCompactList}\small\item\em Key that was pressed, may be Key\+::\+Unknown. \end{DoxyCompactList}\item 
+Int \mbox{\hyperlink{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a06dcdeabe0f3e7110894cee4922c406d}{scancode}}
+\begin{DoxyCompactList}\small\item\em Scancode of the key that was pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sent when a pressed key is repeated by the system. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a06dcdeabe0f3e7110894cee4922c406d}\label{structvlk_1_1vlfw_1_1Window_1_1KeyRepeatEvent_a06dcdeabe0f3e7110894cee4922c406d}} 
+\index{vlk::vlfw::Window::KeyRepeatEvent@{vlk::vlfw::Window::KeyRepeatEvent}!scancode@{scancode}}
+\index{scancode@{scancode}!vlk::vlfw::Window::KeyRepeatEvent@{vlk::vlfw::Window::KeyRepeatEvent}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily Int vlk\+::vlfw\+::\+Window\+::\+Key\+Repeat\+Event\+::scancode}
+
+
+
+Scancode of the key that was pressed. 
+
+\begin{DoxyParagraph}{From GLFW\textquotesingle{}s Documentation\+:}
+The scancode is unique for every key, regardless of whether it has a key token. Scancodes are platform-\/specific but consistent over time, so keys will have different scancodes depending on the platform but they are safe to save to disk. 
+\end{DoxyParagraph}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Window.\+hpp\end{DoxyCompactItemize}

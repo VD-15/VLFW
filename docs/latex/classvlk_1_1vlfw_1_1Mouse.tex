@@ -1,0 +1,161 @@
+\hypertarget{classvlk_1_1vlfw_1_1Mouse}{}\doxysection{vlk\+::vlfw\+::Mouse Class Reference}
+\label{classvlk_1_1vlfw_1_1Mouse}\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+
+
+Static mouse class.  
+
+
+
+
+{\ttfamily \#include $<$Mouse.\+hpp$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Mouse_ae520c5ddb4ddd706ae5e46a38e659f33}{Is\+Button\+Down}} (Mouse\+Button button)
+\begin{DoxyCompactList}\small\item\em Returns true if the given mouse button was held down at the start of the current frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Mouse_a34273bb216e3e7360b30a6a29e74b321}{Is\+Button\+Up}} (Mouse\+Button button)
+\begin{DoxyCompactList}\small\item\em Returns true if the given mouse button was not held down at the start of the current frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Mouse_a45f37dcc8634cf9247919e5c239c13f7}{Is\+Button\+Pressed}} (Mouse\+Button button)
+\begin{DoxyCompactList}\small\item\em Returns true if the given mouse button was pressed some time during the last frame. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classvlk_1_1vlfw_1_1Mouse_afb7684b9a65a36f6b1c1af93ad0a5edf}{Is\+Button\+Released}} (Mouse\+Button button)
+\begin{DoxyCompactList}\small\item\em Returns true if the given mouse button was released some time during the last frame. \end{DoxyCompactList}\item 
+static Vector2 \mbox{\hyperlink{classvlk_1_1vlfw_1_1Mouse_a3359d315a1c3a2e3d89f1876cb8725d1}{Get\+Mouse\+Pos}} ()
+\begin{DoxyCompactList}\small\item\em Gets the position of the mouse. \end{DoxyCompactList}\item 
+static Vector2 \mbox{\hyperlink{classvlk_1_1vlfw_1_1Mouse_a7558383e121df6e17bf233debfb40b04}{Get\+Mouse\+Delta}} ()
+\begin{DoxyCompactList}\small\item\em Gets the distance the mouse has moved since the last frame. \end{DoxyCompactList}\item 
+static Vector2 \mbox{\hyperlink{classvlk_1_1vlfw_1_1Mouse_a5071325978decf537dccc56a16f27d56}{Get\+Scroll\+Delta}} ()
+\begin{DoxyCompactList}\small\item\em Gets the amount the user has scrolled since the last frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Static mouse class. 
+
+Stores the states of mouse buttons, the position of the mouse and how far the mouse has scrolled. Buttons that are pressed are guaranteed to have Is\+Button\+Pressed return true for exactly one frame, same with released buttons and Is\+Button\+Released. Buttons may be pressed and released on the same frame, but Is\+Button\+Down and Is\+Button\+Up will always report the last known state of the button. To use this class, one must first construct an instance of \mbox{\hyperlink{classvlk_1_1vlfw_1_1MouseMain}{Mouse\+Main}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Mouse_a7558383e121df6e17bf233debfb40b04}\label{classvlk_1_1vlfw_1_1Mouse_a7558383e121df6e17bf233debfb40b04}} 
+\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}!GetMouseDelta@{GetMouseDelta}}
+\index{GetMouseDelta@{GetMouseDelta}!vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+\doxysubsubsection{\texorpdfstring{GetMouseDelta()}{GetMouseDelta()}}
+{\footnotesize\ttfamily Vector2 Mouse\+::\+Get\+Mouse\+Delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the distance the mouse has moved since the last frame. 
+
+The returned vector will be measured in screen units. If the mouse leaves the boundaries of the window, this figure will not be reported accurately.
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+
+\end{DoxyParagraph}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classvlk_1_1vlfw_1_1Window_a381073db19417a27018235b000af7795}{Window\+::\+Set\+Cursor\+Mode(\+Cursor\+Mode)}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Mouse_a3359d315a1c3a2e3d89f1876cb8725d1}\label{classvlk_1_1vlfw_1_1Mouse_a3359d315a1c3a2e3d89f1876cb8725d1}} 
+\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}!GetMousePos@{GetMousePos}}
+\index{GetMousePos@{GetMousePos}!vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+\doxysubsubsection{\texorpdfstring{GetMousePos()}{GetMousePos()}}
+{\footnotesize\ttfamily Vector2 Mouse\+::\+Get\+Mouse\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the position of the mouse. 
+
+The returned vector will be measured in screen units relative to the top-\/left corner of the window the mouse is currently over.
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Mouse_a5071325978decf537dccc56a16f27d56}\label{classvlk_1_1vlfw_1_1Mouse_a5071325978decf537dccc56a16f27d56}} 
+\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}!GetScrollDelta@{GetScrollDelta}}
+\index{GetScrollDelta@{GetScrollDelta}!vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+\doxysubsubsection{\texorpdfstring{GetScrollDelta()}{GetScrollDelta()}}
+{\footnotesize\ttfamily Vector2 Mouse\+::\+Get\+Scroll\+Delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the amount the user has scrolled since the last frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Mouse_ae520c5ddb4ddd706ae5e46a38e659f33}\label{classvlk_1_1vlfw_1_1Mouse_ae520c5ddb4ddd706ae5e46a38e659f33}} 
+\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}!IsButtonDown@{IsButtonDown}}
+\index{IsButtonDown@{IsButtonDown}!vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+\doxysubsubsection{\texorpdfstring{IsButtonDown()}{IsButtonDown()}}
+{\footnotesize\ttfamily bool Mouse\+::\+Is\+Button\+Down (\begin{DoxyParamCaption}\item[{Mouse\+Button}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given mouse button was held down at the start of the current frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Mouse_a45f37dcc8634cf9247919e5c239c13f7}\label{classvlk_1_1vlfw_1_1Mouse_a45f37dcc8634cf9247919e5c239c13f7}} 
+\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}!IsButtonPressed@{IsButtonPressed}}
+\index{IsButtonPressed@{IsButtonPressed}!vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+\doxysubsubsection{\texorpdfstring{IsButtonPressed()}{IsButtonPressed()}}
+{\footnotesize\ttfamily bool Mouse\+::\+Is\+Button\+Pressed (\begin{DoxyParamCaption}\item[{Mouse\+Button}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given mouse button was pressed some time during the last frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Mouse_afb7684b9a65a36f6b1c1af93ad0a5edf}\label{classvlk_1_1vlfw_1_1Mouse_afb7684b9a65a36f6b1c1af93ad0a5edf}} 
+\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}!IsButtonReleased@{IsButtonReleased}}
+\index{IsButtonReleased@{IsButtonReleased}!vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+\doxysubsubsection{\texorpdfstring{IsButtonReleased()}{IsButtonReleased()}}
+{\footnotesize\ttfamily bool Mouse\+::\+Is\+Button\+Released (\begin{DoxyParamCaption}\item[{Mouse\+Button}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given mouse button was released some time during the last frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+\mbox{\Hypertarget{classvlk_1_1vlfw_1_1Mouse_a34273bb216e3e7360b30a6a29e74b321}\label{classvlk_1_1vlfw_1_1Mouse_a34273bb216e3e7360b30a6a29e74b321}} 
+\index{vlk::vlfw::Mouse@{vlk::vlfw::Mouse}!IsButtonUp@{IsButtonUp}}
+\index{IsButtonUp@{IsButtonUp}!vlk::vlfw::Mouse@{vlk::vlfw::Mouse}}
+\doxysubsubsection{\texorpdfstring{IsButtonUp()}{IsButtonUp()}}
+{\footnotesize\ttfamily bool Mouse\+::\+Is\+Button\+Up (\begin{DoxyParamCaption}\item[{Mouse\+Button}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if the given mouse button was not held down at the start of the current frame. 
+
+\begin{DoxyParagraph}{Thread Safety}
+This function may be called from any thread.~\newline
+ Access to this class is not synchronized.~\newline
+ This function will not block the calling thread.~\newline
+ 
+\end{DoxyParagraph}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+VLFW/Mouse.\+hpp\item 
+src/Mouse.\+cpp\end{DoxyCompactItemize}

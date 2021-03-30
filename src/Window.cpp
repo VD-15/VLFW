@@ -61,6 +61,105 @@ void RefreshCallback(GLFWwindow* window)
 	SendEvent(Window::RefreshEvent{w});
 }
 
+void KeyCallback(GLFWwindow* window, Int key, Int scancode, Int action, Int mods)
+{
+	switch (action)
+	{
+		case GLFW_PRESS:
+			SendEvent(Window::KeyDownEvent{
+				reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+				static_cast<Key>(key),
+				scancode});
+		case GLFW_RELEASE:
+			SendEvent(Window::KeyUpEvent{
+				reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+				static_cast<Key>(key),
+				scancode});
+		case GLFW_REPEAT:
+			SendEvent(Window::KeyRepeatEvent{
+				reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+				static_cast<Key>(key),
+				scancode});
+		default:
+			break;
+	}
+}
+
+void CharCallback(GLFWwindow* window, UInt codepoint)
+{
+	SendEvent(Window::CharTypeEvent{
+		reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+		codepoint
+		});
+}
+
+void CursorEnterCallback(GLFWwindow* window, Int entered)
+{
+	if (entered)
+	{
+		SendEvent(Window::CursorEnterEvent{
+			reinterpret_cast<Window*>(glfwGetWindowUserPointer(window))
+		});
+	}
+	else
+	{
+		SendEvent(Window::CursorLeaveEvent{
+			reinterpret_cast<Window*>(glfwGetWindowUserPointer(window))
+		});
+	}
+}
+
+void CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
+{
+	SendEvent(Window::MouseMoveEvent{
+		reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+		Vector2(static_cast<Float>(xpos), static_cast<Float>(ypos))
+	});
+}
+
+void MouseButtonCallback(GLFWwindow* window, Int button, Int action, Int mods)
+{
+	if (action == GLFW_PRESS)
+	{
+		SendEvent(Window::MouseButtonDownEvent{
+			reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+			static_cast<MouseButton>(button)
+		});
+	}
+	else
+	{
+		SendEvent(Window::MouseButtonUpEvent{
+			reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+			static_cast<MouseButton>(button)
+		});
+	}
+}
+
+void ScrollCallback(GLFWwindow* window, double x, double y)
+{
+	SendEvent(Window::ScrollEvent{
+		reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+		Vector2(static_cast<Float>(x), static_cast<Float>(y))
+	});
+}
+
+void Window::PollEvents()
+{
+	glfwPollEvents();
+}
+
+void Window::WaitEvents(double timeout)
+{
+	if (timeout > 0.0)
+	{
+		glfwWaitEventsTimeout(timeout);
+	}
+	else
+	{
+		glfwWaitEvents();
+	}
+}
+
 Window::Window(const WindowHints& hints)
 {
 	// Set window hints
@@ -155,6 +254,12 @@ Window::Window(const WindowHints& hints)
 		glfwSetWindowMaximizeCallback(window,     MaximizeCallback);
 		glfwSetWindowFocusCallback(window,        FocusCallback);
 		glfwSetWindowRefreshCallback(window,      RefreshCallback);
+		glfwSetKeyCallback(window,                KeyCallback);
+		glfwSetCharCallback(window,               CharCallback);
+		glfwSetCursorEnterCallback(window,        CursorEnterCallback);
+		glfwSetMouseButtonCallback(window,        MouseButtonCallback);
+		glfwSetCursorPosCallback(window,          CursorPosCallback);
+		glfwSetScrollCallback(window,             ScrollCallback);
 	}
 }
 
@@ -371,41 +476,20 @@ bool Window::IsFocusOnShow() const
 
 ClientAPIType Window::GetClientAPI() const
 {
-	switch (glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CLIENT_API))
-	{
-		case GLFW_OPENGL_API:
-			return ClientAPIType::OpenGL;
-		case GLFW_OPENGL_ES_API:
-			return ClientAPIType::OpenGLES;
-		default:
-			return ClientAPIType::None;
-	}
+	return static_cast<ClientAPIType>(
+		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CLIENT_API));
 }
 
 ContextAPIType Window::GetContextAPI() const
 {
-	switch (glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CONTEXT_CREATION_API))
-	{
-		case GLFW_OSMESA_CONTEXT_API:
-			return ContextAPIType::OSMesa;
-		case GLFW_EGL_CONTEXT_API:
-			return ContextAPIType::EGL;
-		default:
-			return ContextAPIType::Native;
-	}
+	return static_cast<ContextAPIType>(
+		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CONTEXT_CREATION_API));
 }
 
 OpenGLProfileType Window::GetOpenGLProfile() const
 {
-	switch (glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_OPENGL_PROFILE))
-	{
-		case GLFW_OPENGL_CORE_PROFILE:
-			return OpenGLProfileType::Core;
-		case GLFW_OPENGL_COMPAT_PROFILE:
-			return OpenGLProfileType::Compatability;
-		default:
-			return OpenGLProfileType::Any;
-	}
+	return static_cast<OpenGLProfileType>(
+		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_OPENGL_PROFILE));
 }
 
 void Window::GetContextVersion(Int* major, Int* minor, Int* revision) const
@@ -441,4 +525,56 @@ bool Window::IsNoErrorContext() const
 void Window::SwapBuffers()
 {
 	glfwSwapBuffers(reinterpret_cast<GLFWwindow*>(handle));
+}
+
+bool Window::IsRawMouseInputSupported() const
+{
+	return glfwRawMouseMotionSupported();
+}
+
+bool Window::IsRawMouseInput() const
+{
+	return static_cast<bool>(
+		glfwGetInputMode(
+			reinterpret_cast<GLFWwindow*>(handle),
+			GLFW_RAW_MOUSE_MOTION));
+}
+
+void Window::SetRawMouseInput(bool rawMouseInput)
+{
+	if (glfwRawMouseMotionSupported())
+	{
+		glfwSetInputMode(
+			reinterpret_cast<GLFWwindow*>(handle),
+			GLFW_RAW_MOUSE_MOTION,
+			rawMouseInput);
+	}
+}
+
+CursorMode Window::GetCursorMode() const
+{
+	return static_cast<CursorMode>(
+		glfwGetInputMode(
+			reinterpret_cast<GLFWwindow*>(handle),
+			GLFW_CURSOR));
+}
+
+void Window::SetCursorMode(CursorMode mode)
+{
+	glfwSetInputMode(
+		reinterpret_cast<GLFWwindow*>(handle),
+		GLFW_CURSOR,
+		static_cast<Int>(mode));
+}
+
+void Window::ResetCursor()
+{
+	glfwSetCursor(reinterpret_cast<GLFWwindow*>(handle), nullptr);
+}
+
+void Window::SetCursor(Cursor& cursor)
+{
+	glfwSetCursor(
+		reinterpret_cast<GLFWwindow*>(handle),
+		reinterpret_cast<GLFWcursor*>(cursor.GetHandle()));
 }
