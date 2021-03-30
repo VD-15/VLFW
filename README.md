@@ -41,7 +41,7 @@ hints.resizable = false;
 hints.openglProfile = OpenGLProfileType::Core;
 ```
 
-In order for VLFWMain to be able to see your window, you must construct it as a `vlk::Component<>` provided by [ValkyrieEngineCommon](https://github.com/VD-15/ValkyrieEngineCommon). Failure to do so will mean your window will not recieve eventsi, close or swap it's buffers.
+In order for VLFWMain to be able to see your window, you must construct it as a `vlk::Component<>` provided by [ValkyrieEngineCommon](https://github.com/VD-15/ValkyrieEngineCommon). Failure to do so will mean your window will not recieve events, close or swap it's buffers.
 
 After that's done, start the main event loop and your window should function properly.
 
@@ -80,12 +80,13 @@ Should you want to forego use of `VLFWMain` or just want a bit more control over
 
 Window* vlfwWindow = new Window();
 
-GLFWwindow* glfwWindow = vlfwWindow->GetHandle();
+GLFWwindow* glfwWindow = reinterpret_cast<GLFWwindow*>(
+    vlfwWindow->GetHandle());
 ```
 
 ## Recieving Events
 
-More or less every callback that exists in GLFW has a ValkyrieEngine counterpart that can be listened to like any other ValkyrieEngine event. Most of these events will be sent during a `vlk::PreUpdateEvent` as that's when `VLFWMain` will poll for them.
+More or less every callback that exists in GLFW has a VLFW counterpart that can be listened to like any other ValkyrieEngine event. Most of these events will be sent during a `vlk::PreUpdateEvent` as that's when `VLFWMain` will poll for them.
 
 ```cpp
 class MyEventListener :
