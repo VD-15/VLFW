@@ -234,7 +234,12 @@ namespace vlk
 			public:
 			typedef void* WindowHandle;
 
-			//! Sent when the user attempts to close a window
+			/*!
+			 * \brief Sent when the user attempts to close a window
+			 *
+			 * This event does not necessarily mean the window is going to
+			 * close nor does it mean the application is about to exit.
+			 */
 			struct CloseEvent
 			{
 				const Window* window;
@@ -416,8 +421,6 @@ namespace vlk
 
 				/*!
 				 * \brief UTF-32 codepoint for the typed character.
-				 *
-				 * You can convert this to UTF-8 or UTF-16 using <tt>std::codecvt</tt>
 				 */
 				char32_t codepoint;
 			};
