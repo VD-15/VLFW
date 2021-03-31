@@ -130,6 +130,21 @@ void VLFWMain::SetSwapInterval(Int interval)
 	glfwSwapInterval(interval);
 }
 
+bool VLFWMain::GetOpenGLExtensionSupported(const std::string& extension)
+{
+	return glfwExtensionSupported(extension.data());
+}
+
+VLFWMain::OpenGLProcAddress VLFWMain::GetOpenGLProcAddress(const std::string& procName)
+{
+	return glfwGetProcAddress(procName.data());
+}
+
+VLFWMain::OpenGLProcessLoader VLFWMain::GetOpenGLProcessLoader()
+{
+	return (OpenGLProcessLoader)glfwGetProcAddress;
+}
+
 /////////////////
 //// Monitor ////
 /////////////////

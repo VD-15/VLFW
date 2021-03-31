@@ -160,6 +160,20 @@ void Window::WaitEvents(double timeout)
 	}
 }
 
+Window* Window::GetCurrentContext()
+{
+	GLFWwindow* context = glfwGetCurrentContext();
+
+	if (context)
+	{
+		return reinterpret_cast<Window*>(glfwGetWindowUserPointer(context));
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
 Window::Window(const WindowHints& hints)
 {
 	// Set window hints
@@ -268,6 +282,11 @@ Window::~Window()
 	glfwDestroyWindow(reinterpret_cast<GLFWwindow*>(handle));
 
 	if (raiseStopOnClose) vlk::Application::Stop();
+}
+
+void Window::MakeContextCurrent()
+{
+	glfwMakeContextCurrent(reinterpret_cast<GLFWwindow*>(handle));
 }
 
 bool Window::GetCloseFlag() const

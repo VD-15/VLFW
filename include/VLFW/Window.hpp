@@ -430,8 +430,34 @@ namespace vlk
 			bool raiseStopOnClose;
 
 			public:
+
+			/*!
+			 * \brief Polls for any window events, then update the window
+			 *
+			 * \ts
+			 * This function may only be called from the main thread.<br>
+			 * This function will not block the calling thread.<br>
+			 */
 			static void PollEvents();
-			static void WaitEvents(double timeout = 0.0);
+
+			/*!
+			 *  \brief Waits for a window event to be posted, then update the window
+			 *
+			 *  \ts
+			 *  This function may only be called from the main thread.<br>
+			 *  This function will block the calling thread.<br>
+			 */
+			static void WaitEvents(double timeout);
+
+			/*!
+			 * \brief Gets the window whose OpenGL or OpenGL ES context is
+			 * current on the calling thread.
+			 *
+			 * \ts
+			 * This function may only be called from the main thread.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			static Window* GetCurrentContext();
 
 			Window(const WindowHints& hints);
 
@@ -445,6 +471,16 @@ namespace vlk
 			~Window();
 
 			inline WindowHandle GetHandle() { return handle; }
+
+			/*!
+			 * \brief Makes the OpenGL or OpenGL ES context of the
+			 * window current on the calling thread.
+			 *
+			 * \ts
+			 * This function may be called from any thread.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			void MakeContextCurrent();
 
 			/*!
 			 * \brief Returns whether the close flag for this window has been raised.

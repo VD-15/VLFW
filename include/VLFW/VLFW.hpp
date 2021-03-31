@@ -41,7 +41,7 @@ namespace vlk
 			//! Max timeout when waiting for events
 			Double waitTimeout = 0.0;
 
-			//! How many monitor refreshes should we wait to swap window buffers?
+			//! How many monitor refreshes should the driver wait to swap window buffers?
 			Int swapInterval = 0;
 		};
 
@@ -74,8 +74,94 @@ namespace vlk
 
 			void OnEvent(const vlk::PreUpdateEvent& ev) override;
 
+			/*!
+			 * \brief Posts an empty event to the window
+			 *
+			 * This may be used to trigger an update manually if using
+			 * <tt>WaitMode::Wait</tt>
+			 */
 			void SendEmptyEvent();
+
+			/*!
+			 * \brief Sets the swap interval to use when swapping window buffers
+			 *
+			 * \sa VLFWMainArgs::swapInterval
+			 */
 			void SetSwapInterval(Int interval);
+
+			/*!
+			 * \brief Returns true if the given extension is supported by the current OpenGL or OpenGL ES context
+			 */
+			bool GetOpenGLExtensionSupported(const std::string& extension);
+
+			/*!
+			 * \brief Typedef for generic function pointer
+			 *
+			 * One should be able to use this to case to a GLFWglproc
+			 */
+			typedef void(* OpenGLProcAddress)();
+
+			/*!
+			 * \brief Returns the address of the specified OpenGL or OpenGL ES function
+			 *
+			 * Will return <tt>nullptr</tt> if the function is not supported by
+			 * the context. A context must be current on the calling thread in
+			 * order for this to work properly.
+			 *
+			 * \sa Window::MakeContextCurrent()
+			 */
+			OpenGLProcAddress GetOpenGLProcAddress(const std::string& procName);
+
+			/*!
+			 * \brief Typedef for OpenGL loader functions
+			 *
+			 * One should be able to use this to cast to a GLADloadproc
+			 */
+			typedef void* (* OpenGLProcessLoader)(const char* name);
+
+			/*!
+			 * \brief Gets 
+			 */
+			OpenGLProcessLoader GetOpenGLProcessLoader();
+
+			//TODO:
+			/*!
+			 * \brief Returns true if vulkan is at least minimally supported
+			 *
+			 * \glfw
+			 * This function returns whether the Vulkan loader and any
+			 * minimally functional ICD have been found. The availability of a
+			 * Vulkan loader and even an ICD does not by itself guarantee that
+			 * surface creation or even instance creation is possible. For
+			 * example, on Fermi systems Nvidia will install an ICD that
+			 * provides no actual Vulkan support.
+			 *
+			bool IsVulkanSupported();
+
+			 *!
+			 * \brief Gets the names of the instance extentions required to create a vulkan surface.
+			 *
+			 * A superset of this list should be passed into the `vkInstanceCreateInfo` struct.
+			 *
+			 * You should ensure that vulkan is available on the client machine before
+			 * calling this function.
+			 *
+			 * \sa IsVulkanSupported()
+			 *
+			std::vector<std::string> GetRequiredVulkanInstanceExtensions();
+
+			 *!
+			 * \brief Returns the address of the specified vulkan function for the specified instance
+			 *
+			 * If no instance is provided, the following functions can still be loaded:
+			 * <ul>
+			 * <li>vkEnumerateInstanceExtensionProperties</li>
+			 * <li>vkEnumerateInstanceLayerProperties</li>
+			 * <li>vkCreateInstance</li>
+			 * <li>vkGetInstanceProcAddr</li>
+			 * </ul>
+			 *
+			void* GetVulkanProcessAddress(void* instance, const std::string& procName);*/
 		};
 	}
 }

@@ -56,6 +56,9 @@ void main()
 
     // Pass hints to constructor of Window
     auto* window = Component<Window>::Create(hints);
+    
+    // Make the window's context current on the main thread
+    window->MakeContextCurrent();
 
     // Start event loop
     vlk::Application::Start(ApplicationStartArgs{});
@@ -176,3 +179,4 @@ Now you know what VLFW can do, here's a list of things it currently can't do but
 - File Drop callback
 - Gamepad support
 - Joystick support
+- Vulkan support
