@@ -4,3 +4,4 @@
 [submodule "deps/ValkyrieEngineCommon"]
 	path = deps/ValkyrieEngineCommon
 	url = https://github.com/VD-15/ValkyrieEngineCommon
+	branch = master
