@@ -54,8 +54,8 @@ void main()
     // Set up hints how we want
     WindowHints hints { ... };
 
-    // Pass hints to constructor of Window
-    auto* window = Component<Window>::Create(hints);
+    // Pass hints to constructor of Window and attach it to a dummy entity
+    auto* window = Component<Window>::Create(0, hints);
     
     // Make the window's context current on the main thread
     window->MakeContextCurrent();
