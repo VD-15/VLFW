@@ -74,6 +74,7 @@ VLFWMain::VLFWMain(const VLFWMainArgs& args) :
 
 	waitMode = args.waitMode;
 	waitTimeout = args.waitTimeout;
+	waitForRenderer = args.waitForRenderer;
 }
 
 VLFWMain::~VLFWMain()
@@ -83,6 +84,7 @@ VLFWMain::~VLFWMain()
 	glfwTerminate();
 }
 
+// Process Inputs
 void VLFWMain::OnEvent(const vlk::PreUpdateEvent& ev)
 {
 	// Process Events
@@ -101,6 +103,12 @@ void VLFWMain::OnEvent(const vlk::PreUpdateEvent& ev)
 	{
 		glfwWaitEvents();
 	}
+}
+
+// Swap buffers, close windows
+void VLFWMain::OnEvent(const vlk::PostUpdateEvent& ev)
+{
+	if (waitForRenderer) SendEvent(RenderWaitEvent {});
 
 	// Check close flags
 	std::vector<Component<Window>*> toClose;

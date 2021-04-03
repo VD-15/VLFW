@@ -43,6 +43,9 @@ namespace vlk
 
 			//! How many monitor refreshes should the driver wait to swap window buffers?
 			Int swapInterval = 0;
+
+			//! Send a VLFWMain::RenderWaitEvent to wait for the renderer to complete before swapping buffers?
+			bool waitForRenderer = true;
 		};
 
 		/*!
@@ -55,11 +58,26 @@ namespace vlk
 		 * anything else.
 		 */
 		class VLFWMain : 
-			public EventListener<vlk::PreUpdateEvent>
+			public EventListener<vlk::PreUpdateEvent>,
+			public EventListener<vlk::PostUpdateEvent>
 		{
 			std::unique_lock<std::mutex> lock;
 
 			public:
+	
+			/*!
+			 * \brief Sent when VLFWMain is about to swap the buffers of it's windows.
+			 *
+			 * Listeners of this event should block the calling thread until
+			 * any pending rendering is completed and the default framebuffer
+			 * is ready to swap.
+			 *
+			 * \sa VLFWMainArgs::waitForRenderer
+			 */
+			struct RenderWaitEvent
+			{ };
+
+			bool waitForRenderer;
 			Double waitTimeout;
 			WaitMode waitMode;
 
@@ -73,6 +91,7 @@ namespace vlk
 			VLFWMain& operator=(VLFWMain&&) = delete;
 
 			void OnEvent(const vlk::PreUpdateEvent& ev) override;
+			void OnEvent(const vlk::PostUpdateEvent& ev) override;
 
 			/*!
 			 * \brief Posts an empty event to the window
