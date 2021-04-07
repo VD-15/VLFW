@@ -175,8 +175,7 @@ MouseMain mseMain(args);
 Now you know what VLFW can do, here's a list of things it currently can't do but may be implemented in the future:
 
 - Shared context
-- Clipboard input/output
 - File Drop callback
 - Gamepad support
 - Joystick support
-- Vulkan support
+- GLFW extensions

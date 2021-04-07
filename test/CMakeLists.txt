@@ -9,4 +9,6 @@ target_include_directories(VLFWTestDriver
 target_link_libraries(VLFWTestDriver
 	PUBLIC
 		VLFW
+		Vulkan::Vulkan
+		glad
 )

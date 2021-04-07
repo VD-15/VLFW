@@ -49,6 +49,11 @@ namespace vlk
 		};
 
 		/*!
+		 * \brief Pointer to a Vulkan API function
+		 */
+		typedef void(* VulkanProcess)();
+
+		/*!
 		 * \brief Handles window-related events
 		 *
 		 * VLFWMain handles the initialization of GLFW and event processing
@@ -102,7 +107,8 @@ namespace vlk
 			void SendEmptyEvent();
 
 			/*!
-			 * \brief Sets the swap interval to use when swapping window buffers
+			 * \brief Sets the swap interval to use when swapping buffers of
+			 * the current OpenGL context.
 			 *
 			 * \sa VLFWMainArgs::swapInterval
 			 */
@@ -111,7 +117,7 @@ namespace vlk
 			/*!
 			 * \brief Returns true if the given extension is supported by the current OpenGL or OpenGL ES context
 			 */
-			bool GetOpenGLExtensionSupported(const std::string& extension);
+			bool GetOpenGLExtensionSupported(const std::string& extension) const;
 
 			/*!
 			 * \brief Typedef for generic function pointer
@@ -129,7 +135,7 @@ namespace vlk
 			 *
 			 * \sa Window::MakeContextCurrent()
 			 */
-			OpenGLProcAddress GetOpenGLProcAddress(const std::string& procName);
+			OpenGLProcAddress GetOpenGLProcAddress(const std::string& procName) const;
 
 			/*!
 			 * \brief Typedef for OpenGL loader functions
@@ -141,7 +147,7 @@ namespace vlk
 			/*!
 			 * \brief Gets 
 			 */
-			OpenGLProcessLoader GetOpenGLProcessLoader();
+			OpenGLProcessLoader GetOpenGLProcessLoader() const;
 
 			//TODO:
 			/*!
@@ -155,22 +161,53 @@ namespace vlk
 			 * example, on Fermi systems Nvidia will install an ICD that
 			 * provides no actual Vulkan support.
 			 *
-			bool IsVulkanSupported();
+			 * \sa GetRequiredInstanceExtensions()
+			 */
+			bool IsVulkanSupported() const;
 
-			 *!
-			 * \brief Gets the names of the instance extentions required to create a vulkan surface.
+			/*!
+			 * \brief Gets the names of the instance extentions required to
+			 * create a vulkan surface.
 			 *
-			 * A superset of this list should be passed into the `vkInstanceCreateInfo` struct.
+			 * A superset of this list should be passed into the
+			 * <tt>vkInstanceCreateInfo</tt> struct.
 			 *
 			 * You should ensure that vulkan is available on the client machine before
 			 * calling this function.
 			 *
-			 * \sa IsVulkanSupported()
+			 * \param countOut A pointer to an unsigned 32-bit integer in which
+			 * to store the number of elements in the returned c-string array.
 			 *
-			std::vector<std::string> GetRequiredVulkanInstanceExtensions();
+			 * \returns An array of ASCII-encoded c-strings denoting the vulkan
+			 * instance extensions required for GLFW to create a surface on a
+			 * window.
+			 *
+			 * \sa IsVulkanSupported()
+			 * \sa Window::CreateVulkanSurface()
+			 */
+			const char** GetRequiredVulkanInstanceExtensions(UInt* countOut) const;
 
-			 *!
-			 * \brief Returns the address of the specified vulkan function for the specified instance
+			/*!
+			 * \copybrief GetRequiredVulkanInstanceExtensions(UInt)
+			 *
+			 * A superset of this list should be passed into the
+			 * <tt>vkInstanceCreateInfo</tt> struct.
+			 *
+			 * You should ensure that vulkan is available on the client machine before
+			 * calling this function.
+			 *
+			 * \returns A vector of ASCII-encoded strings denoting the vulkan
+			 * instance extensions required for GLFW to create a surface on a
+			 * window.
+			 *
+			 * \sa IsVulkanSupported()
+			 * \sa Window::CreateVulkanSurface()
+			 */
+			std::vector<const char*> GetRequiredVulkanInstanceExtensions() const;
+
+			 /*
+			 * \brief Returns the address of the specified vulkan function for
+			 * the specified instance
 			 *
 			 * If no instance is provided, the following functions can still be loaded:
 			 * <ul>
@@ -179,8 +216,44 @@ namespace vlk
 			 * <li>vkCreateInstance</li>
 			 * <li>vkGetInstanceProcAddr</li>
 			 * </ul>
+			 */
+			VulkanProcess GetVulkanProcessAddress(void* instance, const std::string& procName) const;
+
+			/*!
+			 * \brief Returns true if the specified queue family of the
+			 * specified physical device supports presentation to the platform
 			 *
-			void* GetVulkanProcessAddress(void* instance, const std::string& procName);*/
+			 * \param instance The <tt>VkInstance</tt> the device belongs to
+			 * \param device The <tt>VkPhysicalDevice</tt> the queue family
+			 * belongs to
+			 * \param queueFamily The index of the queue family to query
+			 *
+			 * \sa Window::CreateVulkanSurface
+			 */
+			bool GetVulkanPresentationSupport(void* instance, void* device, UInt queueFamily) const;
+
+			/*!
+			 * \brief Gets the contents of the system clipboard in the form of
+			 * a UTF-8 encoded string
+			 *
+			 * \ts
+			 * This function must only be called from the main thread.<br>
+			 * Access to this class is not synchronized.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			std::string GetClipboard() const;
+
+			/*!
+			 * \brief Writes to the system clipboard
+			 *
+			 * \param data A UTF-8 encoded string to write to che clipboard
+			 *
+			 * \ts
+			 * This function must only be called from the main thread.<br>
+			 * Access to this class is not synchronized.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			void SetClipboard(const std::string& data);
 		};
 	}
 }

@@ -4,7 +4,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 	message(FATAL_ERROR "In-source builds are not allowed, please conduct builds from within a separate build directory")
 endif()
 
-project(VLFW VERSION 0.1.0)
+project(VLFW VERSION 0.1.1)
 
 add_library(VLFW
     ${CMAKE_CURRENT_SOURCE_DIR}/src/VLFW.cpp
@@ -59,7 +59,15 @@ target_link_libraries(VLFW
 if (${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
 	if (BUILD_TESTING)
 		enable_testing()
-		#add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/Catch2)
+
+		# Include GLAD for OpenGL testing
+		if (NOT TARGET glad)
+			add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/glad)
+		endif()
+
+		# Include Vulkan SDK for Vulkan testing
+		find_package(Vulkan REQUIRED FATAL_ERROR)
+
 		add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
 	endif()
 endif()

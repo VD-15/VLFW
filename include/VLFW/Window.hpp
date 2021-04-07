@@ -242,101 +242,101 @@ namespace vlk
 			 */
 			struct CloseEvent
 			{
-				const Window* window;
+				Window* window;
 			};
 
 			//! Sent when a window is resized
 			struct ResizeEvent
 			{
-				const Window* window;
+				Window* window;
 				Point<Int> newSize;
 			};
 
 			//! Sent when a window's default framebuffer is resized
 			struct FramebufferResizeEvent
 			{
-				const Window* window;
+				Window* window;
 				Point<Int> newSize;
 			};
 
 			//! Sent when the content scale of a window is changed
 			struct ContentScaleChangeEvent
 			{
-				const Window* window;
+				Window* window;
 				Vector2 newScale;
 			};
 
 			//! Sent when a window is moved
 			struct MoveEvent
 			{
-				const Window* window;
+				Window* window;
 				Point<Int> newPosition;
 			};
 
 			//! Sent when a window is minimized
 			struct MinimizeEvent
 			{
-				const Window* window;
+				Window* window;
 				bool minimized;
 			};
 
 			//! Sent when a window enters or leaves a maximized state
 			struct MaximizeEvent
 			{
-				const Window* window;
+				Window* window;
 				bool maximized;
 			};
 
 			//! Sent when a window is focused or unfocused
 			struct FocusEvent
 			{
-				const Window* window;
+				Window* window;
 				bool IsFocused;
 			};
 
 			//! Sent when a window is refreshed
 			struct RefreshEvent
 			{
-				const Window* window;
+				Window* window;
 			};
 
 			//! Sent when the cursor enters the area of a window
 			struct CursorEnterEvent
 			{
-				const Window* window;
+				Window* window;
 			};
 
 			//! Sent when the cursor enters the area of a window
 			struct CursorLeaveEvent
 			{
-				const Window* window;
+				Window* window;
 			};
 
 			//! Sent when a mouse button is pressed
 			struct MouseButtonDownEvent
 			{
-				const Window* window;
+				Window* window;
 				MouseButton button;
 			};
 
 			//! Sent when a mouse button is released
 			struct MouseButtonUpEvent
 			{
-				const Window* window;
+				Window* window;
 				MouseButton button;
 			};
 
 			//! Sent when the mouse is moved over a window
 			struct MouseMoveEvent
 			{
-				const Window* window;
+				Window* window;
 				Vector2 position;
 			};
 
 			//! Sent when the user scrolls inside a window
 			struct ScrollEvent
 			{
-				const Window* window;
+				Window* window;
 				Vector2 scrollAmount;
 			};
 
@@ -346,7 +346,7 @@ namespace vlk
 			struct KeyDownEvent
 			{
 				//! Window that recieved the event
-				const Window* window;
+				Window* window;
 
 				//! Key that was pressed, may be Key::Unknown
 				Key key;
@@ -369,7 +369,7 @@ namespace vlk
 			struct KeyUpEvent
 			{
 				//! Window that recieved the event
-				const Window* window;
+				Window* window;
 
 				//! Key that was pressed, may be Key::Unknown
 				Key key;
@@ -392,7 +392,7 @@ namespace vlk
 			struct KeyRepeatEvent
 			{
 				//! Window that recieved the event
-				const Window* window;
+				Window* window;
 
 				//! Key that was pressed, may be Key::Unknown
 				Key key;
@@ -417,12 +417,28 @@ namespace vlk
 				/*!
 				 * \brief The window object that recieved this event.
 				 */
-				const Window* window;
+				Window* window;
 
 				/*!
 				 * \brief UTF-32 codepoint for the typed character.
 				 */
 				char32_t codepoint;
+			};
+
+			/*!
+			 * \brief Sent when a file or directory is 'dropped' onto the window.
+			 */
+			struct FileDropEvent
+			{
+				/*!
+				 * \brief The window object that recieved this event.
+				 */
+				Window* window;
+
+				/*!
+				 * \brief UTF-8 encoded paths that were dropped on the window.
+				 */
+				std::vector<std::string> paths;
 			};
 
 			private:
@@ -1057,6 +1073,26 @@ namespace vlk
 			 * This function will not block the calling thread.<br>
 			 */
 			void SetCursor(Cursor& cursor);
+
+			/*!
+			 * \brief Creates a vulkan surface on the window
+			 *
+			 * \param instance The <tt>VkInstance</tt> to create the surface in
+			 * \param allocator Pointer to the <tt>VkAllocationCallbacks</tt>
+			 * object to use to allocate the surface, or <tt>nullptr</tt> to
+			 * use the default allocator.
+			 * \param surfaceOut A pointer to a <tt>VkSurfaceKHR</tt> object to
+			 * store the handle in. Set to <tt>VK_NULL_HANDLE</tt> if an error
+			 * occured.
+			 *
+			 * \returns <tt>VK_SUCCESS</tt> if successful, or a vulkan error
+			 * code if an error occurred.
+			 *
+			 * \sa VLFWMain::IsVulkanSupported()
+			 * \sa VLFWMain::GetRequiredVulkanInstanceExtensions()
+			 * \sa VLFWMain::GetVulkanPresentationSupport()
+			 */
+			int CreateVulkanSurface(void* instance, const void* allocator, void* surfaceOut);
 		};
 	}
 }

@@ -1,5 +1,6 @@
 #include "VLFW/VLFW.hpp"
 
+#include "vulkan/vulkan.h"
 #include "GLFW/glfw3.h"
 #include "ValkyrieEngine/ValkyrieEngine.hpp"
 #include <stdexcept>
@@ -140,6 +141,21 @@ void ScrollCallback(GLFWwindow* window, double x, double y)
 	SendEvent(Window::ScrollEvent{
 		reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
 		Vector2(static_cast<Float>(x), static_cast<Float>(y))
+	});
+}
+
+void FileDropCallback(GLFWwindow* window, Int count, const char** paths)
+{
+	std::vector<std::string> p(count);
+
+	for (Int i = 0; i < count; i++)
+	{
+		p[i] = paths[i];
+	}
+
+	SendEvent(Window::FileDropEvent{
+		reinterpret_cast<Window*>(glfwGetWindowUserPointer(window)),
+		p
 	});
 }
 
@@ -596,4 +612,14 @@ void Window::SetCursor(Cursor& cursor)
 	glfwSetCursor(
 		reinterpret_cast<GLFWwindow*>(handle),
 		reinterpret_cast<GLFWcursor*>(cursor.GetHandle()));
+}
+
+int Window::CreateVulkanSurface(void* instance, const void* allocator, void* surfaceOut)
+{
+	return glfwCreateWindowSurface(
+		reinterpret_cast<VkInstance>(instance),
+		reinterpret_cast<GLFWwindow*>(handle),
+		reinterpret_cast<const VkAllocationCallbacks*>(allocator),
+		reinterpret_cast<VkSurfaceKHR*>(surfaceOut)
+		);
 }
