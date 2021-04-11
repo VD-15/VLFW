@@ -62,7 +62,7 @@ void RefreshCallback(GLFWwindow* window)
 	SendEvent(Window::RefreshEvent{w});
 }
 
-void KeyCallback(GLFWwindow* window, Int key, Int scancode, Int action, Int mods)
+void KeyCallback(GLFWwindow* window, Int key, Int scancode, Int action, Int)
 {
 	switch (action)
 	{
@@ -118,7 +118,7 @@ void CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 	});
 }
 
-void MouseButtonCallback(GLFWwindow* window, Int button, Int action, Int mods)
+void MouseButtonCallback(GLFWwindow* window, Int button, Int action, Int)
 {
 	if (action == GLFW_PRESS)
 	{

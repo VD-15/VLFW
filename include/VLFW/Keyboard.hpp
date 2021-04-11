@@ -120,7 +120,7 @@ namespace vlk
 		/*!
 		 * \brief Implements functionality for keyboard class
 		 */	
-		class KeyboardMain :
+		class KeyboardMain final :
 			public EventListener<Window::KeyDownEvent>,
 			public EventListener<Window::KeyUpEvent>,
 			public EventListener<PostUpdateEvent>

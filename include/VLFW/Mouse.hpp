@@ -115,7 +115,7 @@ namespace vlk
 		{ };
 
 		//! Implements functionality for the Mouse class
-		class MouseMain :
+		class MouseMain final :
 			public EventListener<Window::MouseButtonUpEvent>,
 			public EventListener<Window::MouseButtonDownEvent>,
 			public EventListener<Window::MouseMoveEvent>,

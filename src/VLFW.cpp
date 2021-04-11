@@ -87,7 +87,7 @@ VLFWMain::~VLFWMain()
 }
 
 // Process Inputs
-void VLFWMain::OnEvent(const vlk::PreUpdateEvent& ev)
+void VLFWMain::OnEvent(const vlk::PreUpdateEvent&)
 {
 	// Process Events
 	// TODO: find a way to expose event processing
@@ -108,7 +108,7 @@ void VLFWMain::OnEvent(const vlk::PreUpdateEvent& ev)
 }
 
 // Swap buffers, close windows
-void VLFWMain::OnEvent(const vlk::PostUpdateEvent& ev)
+void VLFWMain::OnEvent(const vlk::PostUpdateEvent&)
 {
 	if (waitForRenderer) SendEvent(RenderWaitEvent {});
 
@@ -240,7 +240,7 @@ Monitor::Monitor(MonitorHandle handle) :
 	const GLFWgammaramp* ramp = glfwGetGammaRamp(mhdl);
 
 	gammaRamp.reserve(ramp->size);
-	for (Int i = 0; i < ramp->size; i++)
+	for (Size i = 0; i < ramp->size; i++)
 	{
 		gammaRamp.emplace_back(
 			ramp->red[i] / 255.f,
@@ -309,7 +309,7 @@ void Monitor::SetGamma(double gamma)
 
 	gammaRamp.clear();
 	gammaRamp.reserve(ramp->size);
-	for (Int i = 0; i < ramp->size; i++)
+	for (Size i = 0; i < ramp->size; i++)
 	{
 		gammaRamp.emplace_back(
 			ramp->red[i] / 255.f,
@@ -328,7 +328,7 @@ void Monitor::SetGammaRamp(const std::vector<Color>& ramp)
 	green.reserve(gamma.size);
 	blue.resize(gamma.size);
 
-	for (Int i = 0; i < gamma.size; i++)
+	for (Size i = 0; i < gamma.size; i++)
 	{
 		red.push_back(ramp[i].R() * 255.0f);
 		green.push_back(ramp[i].G() * 255.0f);

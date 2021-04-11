@@ -260,7 +260,7 @@ void KeyboardMain::OnEvent(const Window::KeyUpEvent& ev)
 	downSet.erase(ev.scancode);
 }
 
-void KeyboardMain::OnEvent(const PostUpdateEvent& ev)
+void KeyboardMain::OnEvent(const PostUpdateEvent&)
 {
 	pressedSet.clear();
 	releasedSet.clear();

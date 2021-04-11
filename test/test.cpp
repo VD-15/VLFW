@@ -78,7 +78,7 @@ std::string GLSeverityToString(UInt severity)
 	}
 }
 
-void GLErrorCallback(UInt source, UInt type, UInt id, UInt severity, Int length, const char* message, const void* _)
+void GLErrorCallback(UInt source, UInt type, UInt, UInt severity, Int, const char* message, const void*)
 {
 	std::cout << "OpenGL Message:" <<
 	" Severity: " << GLSeverityToString(severity) <<
@@ -217,7 +217,7 @@ class Logger :
 	}
 };
 
-class OpenGLTester :
+class OpenGLTester final :
 	public EventListener<PostUpdateEvent>,
 	public EventListener<VLFWMain::RenderWaitEvent>,
 	public EventListener<Window::FramebufferResizeEvent> 
@@ -389,12 +389,12 @@ void main()
 		glViewport(0, 0, ev.newSize.X(), ev.newSize.Y());
 	}
 
-	void OnEvent(const VLFWMain::RenderWaitEvent& ev) override
+	void OnEvent(const VLFWMain::RenderWaitEvent&) override
 	{
 		glFinish();
 	}
 
-	void OnEvent(const PostUpdateEvent& ev) override
+	void OnEvent(const PostUpdateEvent&) override
 	{
 		auto now = std::chrono::steady_clock::now();
 		float diff = std::chrono::duration_cast<std::chrono::microseconds>(now - last).count() / 1000000.f;

@@ -62,7 +62,7 @@ namespace vlk
 		 * not work without it, so you should construct one before doing
 		 * anything else.
 		 */
-		class VLFWMain : 
+		class VLFWMain final : 
 			public EventListener<vlk::PreUpdateEvent>,
 			public EventListener<vlk::PostUpdateEvent>
 		{
