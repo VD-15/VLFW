@@ -170,11 +170,40 @@ MouseArgs args {};
 MouseMain mseMain(args);
 ```
 
+## Vulkan
+
+As of version 0.2.0, VLFW supports automatic creation of a vulkan context and surface. To do so, simply specify the `Vulkan` context API type in the window hints:
+
+```cpp
+WindowHints hints {};
+args.contextAPI = ContextAPI::Vulkan;
+``` 
+
+From there, you can specify the instance extensions your application requires and the validation layers you want to enable. Some extensions like `VK_KHR_surface` and others required to present to the window are enabled automatically. If any validation layers are provided, the instance extension `VK_EXT_debug_utils` is also enabled automatically.
+
+```cpp
+hints.requiredExtensions = {
+    "VK_EXT_display_surface_counter",
+    "VK_EXT_swapchain_colorspace"
+}
+
+hints.requiredValidationLayers = {
+    "VK_LAYER_KHRONOS_validation"
+}
+```
+
+Once the window has been created, the handles for the created instance and surface can be retrieved as follows:
+
+```cpp
+auto window = Component<Window>::Create(hints);
+
+VkSurfaceKHR surface = window->GetVulkanSurface();
+VkInstance instance = window->GetVulkanSurface();
+```
+
 ## Limitations
 
 Now you know what VLFW can do, here's a list of things it currently can't do but may be implemented in the future:
 
-- Shared context
 - Gamepad support
 - Joystick support
-- GLFW extensions
