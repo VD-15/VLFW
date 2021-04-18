@@ -76,7 +76,7 @@ VLFWMain::VLFWMain(const VLFWMainArgs& args) :
 	waitMode = args.waitMode;
 	waitTimeout = args.waitTimeout;
 	waitForRenderer = args.waitForRenderer;
-	glfwSwapInterval(args.swapInterval);
+	//glfwSwapInterval(args.swapInterval);
 }
 
 VLFWMain::~VLFWMain()
@@ -117,10 +117,10 @@ void VLFWMain::OnEvent(const vlk::PostUpdateEvent&)
 
 	Component<Window>::ForEach([&toClose](Component<Window>* c)
 	{
-		auto client = c->GetClientAPI();
+		auto client = c->GetContextAPI();
 		// Can only swap buffers of a window with an OpenGL or ES context
-		if (client == ClientAPIType::OpenGL || 
-		    client == ClientAPIType::OpenGLES)
+		if (client == ContextAPI::OpenGL || 
+		    client == ContextAPI::OpenGLES)
 		{
 			c->SwapBuffers();
 		}
@@ -145,59 +145,6 @@ void VLFWMain::SendEmptyEvent()
 void VLFWMain::SetSwapInterval(Int interval)
 {
 	glfwSwapInterval(interval);
-}
-
-bool VLFWMain::GetOpenGLExtensionSupported(const std::string& extension) const
-{
-	return glfwExtensionSupported(extension.data());
-}
-
-VLFWMain::OpenGLProcAddress VLFWMain::GetOpenGLProcAddress(const std::string& procName) const
-{
-	return glfwGetProcAddress(procName.data());
-}
-
-VLFWMain::OpenGLProcessLoader VLFWMain::GetOpenGLProcessLoader() const
-{
-	return (OpenGLProcessLoader)glfwGetProcAddress;
-}
-
-bool VLFWMain::IsVulkanSupported() const
-{
-	return static_cast<bool>(glfwVulkanSupported());
-}
-
-const char** VLFWMain::GetRequiredVulkanInstanceExtensions(UInt* countOut) const
-{
-	return glfwGetRequiredInstanceExtensions(countOut);
-}
-
-std::vector<const char*> VLFWMain::GetRequiredVulkanInstanceExtensions() const
-{
-	UInt count = 0;
-	const char** ext = glfwGetRequiredInstanceExtensions(&count);
-	std::vector<const char*> r;
-	r.reserve(count);
-
-	for (UInt i = 0; i < count; i++)
-	{
-		r.emplace_back(ext[i]);
-	}
-
-	return r;
-}
-
-VulkanProcess VLFWMain::GetVulkanProcessAddress(void* instance, const std::string& procName) const
-{
-	return glfwGetInstanceProcAddress(reinterpret_cast<VkInstance>(instance), procName.c_str());
-}
-
-bool VLFWMain::GetVulkanPresentationSupport(void* instance, void* device, UInt queueFamily) const
-{
-	return glfwGetPhysicalDevicePresentationSupport(
-		reinterpret_cast<VkInstance>(instance),
-		reinterpret_cast<VkPhysicalDevice>(device),
-		queueFamily);
 }
 
 std::string VLFWMain::GetClipboard() const

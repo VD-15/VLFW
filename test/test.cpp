@@ -268,9 +268,9 @@ class OpenGLTester final :
 	}
 
 	public:
-	OpenGLTester(const VLFWMain* vlfw)
+	OpenGLTester(const Window* window)
 	{
-		if (!gladLoadGLLoader((GLADloadproc)vlfw->GetOpenGLProcessLoader()))
+		if (!gladLoadGLLoader((GLADloadproc)window->GetOpenGLProcessLoader()))
 		{
 			throw std::runtime_error("Failed to initialize glad");
 		}
@@ -423,7 +423,7 @@ int main()
 	w->SetTitle("OpenGL test");
 	w->MakeContextCurrent();
 	vlfwMain->SetSwapInterval(0);
-	auto* opengltest = new OpenGLTester(vlfwMain);
+	auto* opengltest = new OpenGLTester(w);
 
 	vlk::Application::Start(ApplicationArgs{});
 

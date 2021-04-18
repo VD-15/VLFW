@@ -41,9 +41,6 @@ namespace vlk
 			//! Max timeout when waiting for events
 			Double waitTimeout = 0.0;
 
-			//! How many monitor refreshes should the driver wait to swap window buffers?
-			Int swapInterval = 0;
-
 			//! Send a VLFWMain::RenderWaitEvent to wait for the renderer to complete before swapping buffers?
 			bool waitForRenderer = true;
 		};
@@ -115,42 +112,6 @@ namespace vlk
 			void SetSwapInterval(Int interval);
 
 			/*!
-			 * \brief Returns true if the given extension is supported by the current OpenGL or OpenGL ES context
-			 */
-			bool GetOpenGLExtensionSupported(const std::string& extension) const;
-
-			/*!
-			 * \brief Typedef for generic function pointer
-			 *
-			 * One should be able to use this to case to a GLFWglproc
-			 */
-			typedef void(* OpenGLProcAddress)();
-
-			/*!
-			 * \brief Returns the address of the specified OpenGL or OpenGL ES function
-			 *
-			 * Will return <tt>nullptr</tt> if the function is not supported by
-			 * the context. A context must be current on the calling thread in
-			 * order for this to work properly.
-			 *
-			 * \sa Window::MakeContextCurrent()
-			 */
-			OpenGLProcAddress GetOpenGLProcAddress(const std::string& procName) const;
-
-			/*!
-			 * \brief Typedef for OpenGL loader functions
-			 *
-			 * One should be able to use this to cast to a GLADloadproc
-			 */
-			typedef void* (* OpenGLProcessLoader)(const char* name);
-
-			/*!
-			 * \brief Gets 
-			 */
-			OpenGLProcessLoader GetOpenGLProcessLoader() const;
-
-			//TODO:
-			/*!
 			 * \brief Returns true if vulkan is at least minimally supported
 			 *
 			 * \glfw
@@ -164,73 +125,6 @@ namespace vlk
 			 * \sa GetRequiredInstanceExtensions()
 			 */
 			bool IsVulkanSupported() const;
-
-			/*!
-			 * \brief Gets the names of the instance extentions required to
-			 * create a vulkan surface.
-			 *
-			 * A superset of this list should be passed into the
-			 * <tt>vkInstanceCreateInfo</tt> struct.
-			 *
-			 * You should ensure that vulkan is available on the client machine before
-			 * calling this function.
-			 *
-			 * \param countOut A pointer to an unsigned 32-bit integer in which
-			 * to store the number of elements in the returned c-string array.
-			 *
-			 * \returns An array of ASCII-encoded c-strings denoting the vulkan
-			 * instance extensions required for GLFW to create a surface on a
-			 * window.
-			 *
-			 * \sa IsVulkanSupported()
-			 * \sa Window::CreateVulkanSurface()
-			 */
-			const char** GetRequiredVulkanInstanceExtensions(UInt* countOut) const;
-
-			/*!
-			 * \copybrief GetRequiredVulkanInstanceExtensions(UInt)
-			 *
-			 * A superset of this list should be passed into the
-			 * <tt>vkInstanceCreateInfo</tt> struct.
-			 *
-			 * You should ensure that vulkan is available on the client machine before
-			 * calling this function.
-			 *
-			 * \returns A vector of ASCII-encoded strings denoting the vulkan
-			 * instance extensions required for GLFW to create a surface on a
-			 * window.
-			 *
-			 * \sa IsVulkanSupported()
-			 * \sa Window::CreateVulkanSurface()
-			 */
-			std::vector<const char*> GetRequiredVulkanInstanceExtensions() const;
-
-			 /*
-			 * \brief Returns the address of the specified vulkan function for
-			 * the specified instance
-			 *
-			 * If no instance is provided, the following functions can still be loaded:
-			 * <ul>
-			 * <li>vkEnumerateInstanceExtensionProperties</li>
-			 * <li>vkEnumerateInstanceLayerProperties</li>
-			 * <li>vkCreateInstance</li>
-			 * <li>vkGetInstanceProcAddr</li>
-			 * </ul>
-			 */
-			VulkanProcess GetVulkanProcessAddress(void* instance, const std::string& procName) const;
-
-			/*!
-			 * \brief Returns true if the specified queue family of the
-			 * specified physical device supports presentation to the platform
-			 *
-			 * \param instance The <tt>VkInstance</tt> the device belongs to
-			 * \param device The <tt>VkPhysicalDevice</tt> the queue family
-			 * belongs to
-			 * \param queueFamily The index of the queue family to query
-			 *
-			 * \sa Window::CreateVulkanSurface
-			 */
-			bool GetVulkanPresentationSupport(void* instance, void* device, UInt queueFamily) const;
 
 			/*!
 			 * \brief Gets the contents of the system clipboard in the form of

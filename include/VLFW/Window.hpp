@@ -4,12 +4,13 @@
 #include "Input.hpp"
 #include "Monitor.hpp"
 #include "Cursor.hpp"
+#include <type_traits>
 
 namespace vlk
 {
 	namespace vlfw
 	{
-		enum class ClientAPIType
+		enum class ContextAPI
 		{
 			//! Don't create a client context
 			None =           0x00000000,
@@ -19,9 +20,12 @@ namespace vlk
 
 			//! Create an OpenGL ES context
 			OpenGLES =       0x00030002,
+
+			//! Create a vulkan context
+			Vulkan =         0x10000000,
 		};
 
-		enum class ContextAPIType
+		enum class ContextCreationAPI
 		{
 			//! Use the system's native API to create a context
 			Native =         0x00036001,
@@ -33,6 +37,9 @@ namespace vlk
 			OSMesa =         0x00036003
 		};
 
+		/*!
+		 * Specifies a profile for an OpenGL context to conform to
+		 */
 		enum class OpenGLProfileType
 		{
 			//! Use any available OpenGL profile
@@ -43,6 +50,55 @@ namespace vlk
 
 			//! Use an OpenGL Compatibility profile
 			Compatability =  0x00032002
+		};
+
+		/*!
+		 * \brief Describes the robustness strategy to employ in the event of
+		 * a hardware fault or driver failure.
+		 *
+		 * Only affects OpenGL contexts.
+		 */
+		enum class ContextRobustness
+		{
+			/*!
+			 * \brief No robustness strategy
+			 */
+			None        = 0,
+
+			/*!
+			 * \brief The driver will never deliver a reset notification to the
+			 * context. This will effectively disallow loss of context state.
+			 */
+			NoResetNotif = 0x00031001,
+
+			/*!
+			 * \brief A reset will result in the loss of all context state,
+			 * requiring the recreation of all associated objects.
+			 */
+			LoseOnReset  = 0x00031002,
+		};
+
+		/*!
+		 * \brief Behavior to employ when switching OpenGL contexts.
+		 *
+		 * Only affects OpenGL contexts.
+		 */
+		enum class ContextReleaseBehavior
+		{
+			/*!
+			 * \brief Use the context creation API's default behavior
+			 */
+			Any = 0,
+
+			/*!
+			 * \brief Flush and pending commands in the graphics pipeline
+			 */
+			Flush = 0x00035001,
+
+			/*!
+			 * \brief Do nothing
+			 */
+			None = 0x00035002
 		};
 
 		enum class CursorMode
@@ -162,19 +218,40 @@ namespace vlk
 			/////////////////////////
 
 			//! The client API to create a context for
-			ClientAPIType clientAPI =       ClientAPIType::OpenGL;
+			ContextAPI contextAPI                  = ContextAPI::OpenGL;
 
 			//! The context creation API used to generate the context
-			ContextAPIType contextAPI =     ContextAPIType::Native;
+			ContextCreationAPI contextCreationAPI  = ContextCreationAPI::Native;
+
+			//! The context robustness strategy to employ
+			ContextRobustness robustness           = ContextRobustness::None;
+
+			//! The behaviour to employ when switching OpenGL contexts
+			ContextReleaseBehavior releaseBehavior = ContextReleaseBehavior::Any;
 
 			//! The minimum required major version the context must conform to
-			Int contextVersionMajor =       1;
+			Int contextVersionMajor                = 1;
 
 			//! The minimum required minor version the context must conform to
-			Int contextVersionMinor =       0;
+			Int contextVersionMinor                = 0;
 
 			//! Whether the context should not generate any errors
-			bool noErrorContext =           false;
+			bool noErrorContext                    = false;
+
+			/*!
+			 * \brief A list of OpenGL, OpenGL ES or Vulkan instance extensions
+			 * that will be required by the application.
+			 *
+			 * If using an OpenGL or OpenGL ES context, support will be queried
+			 * for each of the extensions in the list and a std::runtime_error
+			 * will be thrown if any are not supported.
+			 *
+			 * If using a Vulkan context, this list will be passed to the
+			 * <tt>VkInstanceCreateInfo</tt> struct alone with any extensions
+			 * that VLFW requires. A std::runtime_error will be thrown if
+			 * any of the extensions are not supported.
+			 */
+			std::vector<const char*> requiredExtensions = {};
 
 			/////////////////////////////////
 			//// OpenGL-specific options ////
@@ -191,6 +268,33 @@ namespace vlk
 
 			//! What OpenGL profile to create the context for
 			OpenGLProfileType openglProfile =     OpenGLProfileType::Any;
+
+			/////////////////////////////////
+			//// VULKAN-SPECIFIC OPTIONS ////
+			/////////////////////////////////
+
+			/*!
+			 * \brief Pointer to a <tt>VkAllocationCallbacks</tt> object to use
+			 * for the vulkan instance and surface, if using a vulkan context.
+			 */
+			const void* allocationCallbacks = nullptr;
+
+			//! Name of the application to pass into
+			std::string applicationName     = "";
+
+			//! Major version of the application
+			UInt applicationVersionMajor    = 1;
+
+			//! Minor version of the application
+			UInt applicationVersionMinor    = 0;
+
+			//! Patch version of the application
+			UInt applicationVersionPatch    = 0;
+
+			/*!
+			 * \brief A list of names of validation layers to enable.
+			 */
+			std::vector<const char*> requiredValidationLayers;
 
 			////////////////////////////////
 			//// macOS-specific options ////
@@ -444,6 +548,7 @@ namespace vlk
 			private:
 			WindowHandle handle;
 			bool raiseStopOnClose;
+			ContextAPI contextAPI;
 
 			public:
 
@@ -475,7 +580,14 @@ namespace vlk
 			 */
 			static Window* GetCurrentContext();
 
-			Window(const WindowHints& hints);
+			/*!
+			 * \brief Constructs a window using the provided args
+			 *
+			 * \param share The window to share a context with.<br>This context
+			 * will be destroyed when all windows that share the context have
+			 * been closed. Do any necessary cleanup during a CloseEvent
+			 */
+			Window(const WindowHints& hints, Window* share = nullptr);
 
 			//TODO: Might be able to implement move constructor by updating the user pointer of the window
 
@@ -486,6 +598,9 @@ namespace vlk
 			Window& operator=(Window&&) = delete;
 			~Window();
 
+			/*!
+			 * \brief Returns the underlying GLFW handle to this window object
+			 */
 			inline WindowHandle GetHandle() { return handle; }
 
 			/*!
@@ -912,7 +1027,7 @@ namespace vlk
 			 *
 			 * \sa WindowHints
 			 */
-			ClientAPIType GetClientAPI() const;
+			inline ContextAPI GetContextAPI() const { return contextAPI; }
 
 			/*!
 			 * \brief Gets the API that was used to create the window's context
@@ -922,7 +1037,7 @@ namespace vlk
 			 * Access to this class is not synchronized.<br>
 			 * This function will not block the calling thread.<br>
 			 */
-			ContextAPIType GetContextAPI() const;
+			ContextCreationAPI GetContextCreationAPI() const;
 
 			/*!
 			 * \brief Gets the OpenGL profile used by the context
@@ -935,6 +1050,28 @@ namespace vlk
 			OpenGLProfileType GetOpenGLProfile() const;
 
 			/*!
+			 * \brief Gets the robustness strategy used by this window's OpenGL
+			 * context
+			 *
+			 * \ts
+			 * This function must only be called from the main thread.<br>
+			 * Access to this class is not synchronized.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			ContextRobustness GetContextRobustness() const;
+
+			/*!
+			 * \brief Gets the release behavior used by this window's OpenGL
+			 * context
+			 *
+			 * \ts
+			 * This function must only be called from the main thread.<br>
+			 * Access to this class is not synchronized.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			ContextReleaseBehavior GetContextReleaseBehavior() const;
+
+			/*!
 			 * \brief Gets the version of the window's context
 			 *
 			 * \ts
@@ -945,7 +1082,8 @@ namespace vlk
 			void GetContextVersion(Int* major, Int* minor, Int* revision) const;
 
 			/*!
-			 * \brief Returns true if the window's OpenGL context is forward compatible
+			 * \brief Returns true if the window's OpenGL context is forward
+			 * compatible
 			 *
 			 * \ts
 			 * This function must only be called from the main thread.<br>
@@ -955,7 +1093,8 @@ namespace vlk
 			bool IsOpenGLForwardCompatible() const;
 
 			/*!
-			 * \brief Returns true if the window's OpenGL context is a debug context
+			 * \brief Returns true if the window's OpenGL context is a debug
+			 * context
 			 *
 			 * \ts
 			 * This function must only be called from the main thread.<br>
@@ -965,7 +1104,8 @@ namespace vlk
 			bool IsOpenGLDebug() const;
 
 			/*!
-			 * \brief Returns true if the window's context does not raise errors
+			 * \brief Returns true if the window's OpenGl context does not
+			 * raise errors
 			 *
 			 * \ts
 			 * This function must only be called from the main thread.<br>
@@ -975,7 +1115,83 @@ namespace vlk
 			bool IsNoErrorContext() const;
 
 			/*!
+			 * \brief Returns true if the given OpenGL extension is supported
+			 * by the implementation
+			 *
+			 * \ts
+			 * This function may be called from any thread.<br>
+			 * Access to this class is not synchronized.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			bool IsOpenGLExtensionSupported(const char* extensionName) const;
+
+			/*!
+			 * \brief Returns true if the given Vulkan instance extension is
+			 * supported by the implementation
+			 *
+			 * \ts
+			 * This function may be called from any thread.<br>
+			 * Access to this class is not synchronized.<br>
+			 * This function will not block the calling thread.<br>
+			 */
+			static bool IsVulkanExtensionSupported(const char* extensionName);
+
+			/*!
+			 * \brief Generic function pointer typedef for loaded OpenGL or
+			 * Vulkan extensions.
+			 */
+			typedef void(* ExtensionProc)(void);
+
+			/*!
+			 * \brief Gets the address of a core or extension function of the
+			 * context API the window was created with.
+			 *
+			 * Will return <tt>nullptr</tt> if the function is not supported by
+			 * the implementation. If using an OpenGL or OpenGL ES context, it
+			 * must be current on the calling thread in order for this to work
+			 * properly.
+			 *
+			 * \param name The name of the process to retrieve
+			 *
+			 * \sa MakeContextCurrent()
+			 */
+			ExtensionProc GetProcessAddress(const char* name) const;
+
+			/*!
+			 * \brief Typedef for OpenGL loader functions
+			 *
+			 * One should be able to use this to cast to a GLADloadproc
+			 */
+			typedef void* (* OpenGLProcessLoader)(const char* name);
+
+			/*!
+			 * \brief Gets the address of the OpenGL process loader
+			 *
+			 * The OpenGL or OpenGL ES context of this window must be current
+			 * on the calling thread in order for this function to work.
+			 *
+			 * The returned value may be passed directly into gladLoadGLLoader:
+			 *
+			 * \code
+			 * Component<Window>* window = Component<Window>::Create(WindowArgs{});
+			 * window->MakeContextCurrent();
+			 *
+			 * // Initialize glad
+			 * if (!gladLoadGLLoader((GLADloadproc)window->GetOpenGLProcessLoader()))
+			 * {
+			 *     throw std::runtime_error("Failed to initialize glad!");
+			 * }
+			 * \endcode
+			 *
+			 * \sa MakeContextCurrent()
+			 */
+			OpenGLProcessLoader GetOpenGLProcessLoader() const;
+
+			/*!
 			 * \brief Swaps the front and back buffers of the window
+			 *
+			 * This function only has an effect if the window was created with
+			 * an OpenGL or OpenGL ES context
 			 *
 			 * \ts
 			 * This function must only be called from the main thread.<br>
@@ -983,6 +1199,46 @@ namespace vlk
 			 * This function will not block the calling thread.<br>
 			 */
 			void SwapBuffers();
+
+			/*!
+			 * \brief Returns true if the specified queue family of the
+			 * specified physical device supports presentation to the window's
+			 * surface
+			 *
+			 * \param instance The <tt>VkInstance</tt> the device belongs to
+			 * \param device The <tt>VkPhysicalDevice</tt> the queue family
+			 * belongs to
+			 * \param queueFamily The index of the queue family to query
+			 *
+			 * \sa CreateVulkanSurface()
+			 */
+			bool GetVulkanPresentationSupport(void* physicalDevice, UInt queueFamily) const;
+
+			/*!
+			 * \brief Returns the handle to this window's vulkan instance
+			 *
+			 * The lifetime of the instance is handled by this window object
+			 * and is destroyed when the window closes. Do any necessary
+			 * cleanup during a CloseEvent
+			 *
+			 * \returns <tt>nullptr</tt> if the Context API of this window is
+			 * anything other than ContextAPI::Vulkan, otherwise returns a
+			 * handle to a <tt>VkInstance</tt> object.
+			 */
+			void* GetVulkanInstance() const;
+
+			/*!
+			 * \brief Returns the handle to this window's vulkan surface
+			 *
+			 * The lifetime of the surface is handled by this window object and
+			 * is destroyed when the window closes. Do any necessary cleanup
+			 * during a CloseEvent
+			 *
+			 * \returns <tt>nullptr</tt> if the Context API of this window is
+			 * anything other than ContextAPI::Vulkan, otherwise returns a
+			 * handle to a <tt>VkSurfaceKHR</tt> object.
+			 */
+			void* GetVulkanSurface() const;
 
 			/*!
 			 * \brief Returns true if the window can recieve raw mouse movement
@@ -1073,26 +1329,6 @@ namespace vlk
 			 * This function will not block the calling thread.<br>
 			 */
 			void SetCursor(Cursor& cursor);
-
-			/*!
-			 * \brief Creates a vulkan surface on the window
-			 *
-			 * \param instance The <tt>VkInstance</tt> to create the surface in
-			 * \param allocator Pointer to the <tt>VkAllocationCallbacks</tt>
-			 * object to use to allocate the surface, or <tt>nullptr</tt> to
-			 * use the default allocator.
-			 * \param surfaceOut A pointer to a <tt>VkSurfaceKHR</tt> object to
-			 * store the handle in. Set to <tt>VK_NULL_HANDLE</tt> if an error
-			 * occured.
-			 *
-			 * \returns <tt>VK_SUCCESS</tt> if successful, or a vulkan error
-			 * code if an error occurred.
-			 *
-			 * \sa VLFWMain::IsVulkanSupported()
-			 * \sa VLFWMain::GetRequiredVulkanInstanceExtensions()
-			 * \sa VLFWMain::GetVulkanPresentationSupport()
-			 */
-			int CreateVulkanSurface(void* instance, const void* allocator, void* surfaceOut);
 		};
 	}
 }

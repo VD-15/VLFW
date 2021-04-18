@@ -4,9 +4,18 @@
 #include "GLFW/glfw3.h"
 #include "ValkyrieEngine/ValkyrieEngine.hpp"
 #include <stdexcept>
+#include <atomic>
+#include <map>
 
 using namespace vlk;
 using namespace vlfw;
+
+namespace
+{
+	std::map<const Window*, VkInstance> instances;
+	std::map<const Window*, VkSurfaceKHR> surfaces;
+	std::map<VkInstance, std::atomic_int> instanceUsers;
+}
 
 void CloseCallback(GLFWwindow* window)
 {
@@ -190,7 +199,7 @@ Window* Window::GetCurrentContext()
 	}
 }
 
-Window::Window(const WindowHints& hints)
+Window::Window(const WindowHints& hints, Window* share)
 {
 	// Set window hints
 	{
@@ -229,8 +238,18 @@ Window::Window(const WindowHints& hints)
 		glfwWindowHint(GLFW_REFRESH_RATE, hints.fullscreenRefreshRate);
 
 		// Context
-		glfwWindowHint(GLFW_CLIENT_API,            static_cast<Int>(hints.clientAPI));
-		glfwWindowHint(GLFW_CONTEXT_CREATION_API,  static_cast<Int>(hints.contextAPI));
+		if (hints.contextAPI == ContextAPI::Vulkan)
+		{
+			// The value we use for ContextAPI::Vulkan is not recognised by
+			// GLFW, but needs to be unique from ContextAPI::None, so check for
+			// that here
+			glfwWindowHint(GLFW_CLIENT_API,        GLFW_NO_API);
+		}
+		else
+		{
+			glfwWindowHint(GLFW_CLIENT_API,        static_cast<Int>(hints.contextAPI));
+		}
+		glfwWindowHint(GLFW_CONTEXT_CREATION_API,  static_cast<Int>(hints.contextCreationAPI));
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, hints.contextVersionMajor);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, hints.contextVersionMinor);
 		glfwWindowHint(GLFW_CONTEXT_NO_ERROR,      hints.noErrorContext);
@@ -255,13 +274,19 @@ Window::Window(const WindowHints& hints)
 	if (hints.monitor == nullptr) mon = nullptr;
 	else mon = reinterpret_cast<GLFWmonitor*>(hints.monitor->GetHandle());
 
+	GLFWwindow* sha;
+	if (share == nullptr) sha = nullptr;
+	else if (share->contextAPI != hints.contextAPI)
+		throw std::runtime_error("Context APIs of shared windows must match!");
+	else sha = reinterpret_cast<GLFWwindow*>(share->handle);
+
 	// Create Window
 	GLFWwindow* window = glfwCreateWindow(
 		hints.size.X(),
 		hints.size.Y(),
 		hints.title.data(),
 		mon,
-		nullptr);
+		sha);
 
 	// Window creation failed, abort.
 	if (window == nullptr) throw std::runtime_error("Window creation failed.");
@@ -272,6 +297,7 @@ Window::Window(const WindowHints& hints)
 
 	// Set other members
 	raiseStopOnClose = hints.raiseStopOnClose;
+	contextAPI = hints.contextAPI;
 	
 	// Setup callbacks
 	{
@@ -291,10 +317,171 @@ Window::Window(const WindowHints& hints)
 		glfwSetCursorPosCallback(window,          CursorPosCallback);
 		glfwSetScrollCallback(window,             ScrollCallback);
 	}
+
+	//TODO: Create vulkan instance
+	if (hints.contextAPI == ContextAPI::Vulkan)
+	{
+		VkApplicationInfo appInfo {};
+		appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+		appInfo.pApplicationName = hints.applicationName.c_str();
+		appInfo.applicationVersion = VK_MAKE_VERSION(hints.applicationVersionMajor,
+		                                             hints.applicationVersionMinor,
+		                                             hints.applicationVersionPatch);
+		appInfo.pEngineName = "Valkyrie Engine (VLFW)";
+		appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+		appInfo.apiVersion = VK_API_VERSION_1_2;
+
+		std::vector<const char*> extensions;
+		UInt extCount;
+		const char** extNames = glfwGetRequiredInstanceExtensions(&extCount);
+
+		// Append GLFW instance extensions
+		extensions.resize(extCount);
+		for (UInt i = 0; i < extCount; i++)
+		{
+			extensions[i] = extNames[i];
+		}
+
+		// Append user-requested extensions
+		extensions.insert(
+			extensions.end(),
+			hints.requiredExtensions.begin(),
+			hints.requiredExtensions.end());
+
+		// Check extension support
+		{
+			vkEnumerateInstanceExtensionProperties(nullptr, &extCount, nullptr);
+			std::vector<VkExtensionProperties> supExt(extCount);
+			vkEnumerateInstanceExtensionProperties(nullptr, &extCount, supExt.data());
+
+			for (auto r = extensions.cbegin(); r != extensions.cend(); r++)
+			{
+				bool extFound = false;
+
+				for (auto s = supExt.cbegin(); s != supExt.cend(); s++)
+				{
+					if (std::string(s->extensionName) == *r)
+					{
+						extFound = true;
+						break;
+					}
+				}
+
+				if (!extFound)
+					throw std::runtime_error(
+						std::string("Requested Vulkan extension is not supported: ") + *r);
+			}
+		}
+
+		// Check validation layer support
+		if (!hints.requiredValidationLayers.empty())
+		{
+			UInt layerCount = 0;
+			vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
+			std::vector<VkLayerProperties>layers(layerCount);
+			vkEnumerateInstanceLayerProperties(&layerCount, layers.data());
+
+			for (auto r = hints.requiredValidationLayers.cbegin();
+			     r != hints.requiredValidationLayers.cend();
+			     r++)
+			{
+				bool layerFound = false;
+
+				for (auto s = layers.cbegin(); s != layers.cend(); s++)
+				{
+					if (std::string(s->layerName) == *r)
+					{
+						layerFound = true;
+						break;
+					}
+				}
+
+				if (!layerFound)
+				{
+					throw std::runtime_error(
+						std::string("Required Vulkan validation layer is not supported: ") + *r);
+				}
+			}
+		}
+		
+		VkInstance instance = VK_NULL_HANDLE;
+
+		if (share)
+		{
+			// Get vulkan instance of other window
+			instance = instances[share];
+		}
+		else
+		{
+			// Create vulkan instance
+			VkInstanceCreateInfo createInfo {};
+			createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+			createInfo.pApplicationInfo = &appInfo;
+			createInfo.enabledExtensionCount = extensions.size();
+			createInfo.ppEnabledExtensionNames = extensions.data();
+			createInfo.enabledLayerCount = hints.requiredValidationLayers.size();
+			createInfo.ppEnabledLayerNames = hints.requiredValidationLayers.data();
+
+			if (vkCreateInstance(
+					&createInfo,
+					reinterpret_cast<const VkAllocationCallbacks*>(hints.allocationCallbacks),
+					&instance) != VK_SUCCESS)
+			{
+				throw std::runtime_error("Failed to create vulkan instance");
+			}
+		}
+
+		VkSurfaceKHR surface;
+
+		if (glfwCreateWindowSurface(
+			instance,
+			reinterpret_cast<GLFWwindow*>(handle),
+			reinterpret_cast<const VkAllocationCallbacks*>(hints.allocationCallbacks),
+			&surface) != VK_SUCCESS)
+		{
+			throw std::runtime_error("Failed to create vulkan surface");
+		}
+
+		instances[this] = instance;
+		instanceUsers[instance]++;
+		surfaces[this] = surface;
+	}
+	else if (hints.contextAPI != ContextAPI::None)
+	{
+		glfwMakeContextCurrent(reinterpret_cast<GLFWwindow*>(handle));
+
+		for (auto ext = hints.requiredExtensions.cbegin();
+		     ext != hints.requiredExtensions.cend();
+		     ext++)
+		{
+			if (!glfwExtensionSupported(*ext))
+			{
+				throw std::runtime_error(
+					std::string("Requested OpenGL extensions is not supported: ") + *ext);
+			}
+		}
+	}
 }
 
 Window::~Window()
 {
+	if (contextAPI == ContextAPI::Vulkan)
+	{
+		VkInstance instance = instances[this];
+		VkSurfaceKHR surface = surfaces[this];
+		vkDestroySurfaceKHR(instance, surface, nullptr);
+
+		// Check if there are no more users of this instance
+		if (instanceUsers[instance].fetch_sub(1) == 1)
+		{
+			instanceUsers.erase(instance);
+			vkDestroyInstance(instance, nullptr);
+		}
+
+		instances.erase(this);
+		surfaces.erase(this);
+	}
+
 	glfwDestroyWindow(reinterpret_cast<GLFWwindow*>(handle));
 
 	if (raiseStopOnClose) vlk::Application::Stop();
@@ -509,15 +696,9 @@ bool Window::IsFocusOnShow() const
 	return glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_FOCUS_ON_SHOW);
 }
 
-ClientAPIType Window::GetClientAPI() const
+ContextCreationAPI Window::GetContextCreationAPI() const
 {
-	return static_cast<ClientAPIType>(
-		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CLIENT_API));
-}
-
-ContextAPIType Window::GetContextAPI() const
-{
-	return static_cast<ContextAPIType>(
+	return static_cast<ContextCreationAPI>(
 		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CONTEXT_CREATION_API));
 }
 
@@ -525,6 +706,18 @@ OpenGLProfileType Window::GetOpenGLProfile() const
 {
 	return static_cast<OpenGLProfileType>(
 		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_OPENGL_PROFILE));
+}
+
+ContextRobustness Window::GetContextRobustness() const
+{
+	return static_cast<ContextRobustness>(
+		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CONTEXT_ROBUSTNESS));
+}
+
+ContextReleaseBehavior Window::GetContextReleaseBehavior() const
+{
+	return static_cast<ContextReleaseBehavior>(
+		glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CONTEXT_RELEASE_BEHAVIOR));
 }
 
 void Window::GetContextVersion(Int* major, Int* minor, Int* revision) const
@@ -557,9 +750,71 @@ bool Window::IsNoErrorContext() const
 	return glfwGetWindowAttrib(reinterpret_cast<GLFWwindow*>(handle), GLFW_CONTEXT_NO_ERROR);
 }
 
+bool Window::IsOpenGLExtensionSupported(const char* extensionName) const
+{
+	return glfwExtensionSupported(extensionName);
+}
+
+bool Window::IsVulkanExtensionSupported(const char* extensionName)
+{
+	UInt extCount;
+	vkEnumerateInstanceExtensionProperties(nullptr, &extCount, nullptr);
+	std::vector<VkExtensionProperties> extensions(extCount);
+	vkEnumerateInstanceExtensionProperties(nullptr, &extCount, extensions.data());
+
+	for (auto it = extensions.cbegin(); it != extensions.cend(); it++)
+	{
+		if (std::string(it->extensionName) == extensionName)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+Window::ExtensionProc Window::GetProcessAddress(const char* name) const
+{
+	if (contextAPI == ContextAPI::Vulkan)
+	{
+		return glfwGetInstanceProcAddress(instances[this], name);
+	}
+	else if (contextAPI != ContextAPI::None)
+	{
+		return glfwGetProcAddress(name);
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+Window::OpenGLProcessLoader Window::GetOpenGLProcessLoader() const
+{
+	return (Window::OpenGLProcessLoader)(glfwGetProcAddress);
+}
+
 void Window::SwapBuffers()
 {
 	glfwSwapBuffers(reinterpret_cast<GLFWwindow*>(handle));
+}
+
+bool Window::GetVulkanPresentationSupport(void* physicalDevice, UInt queueFamily) const
+{
+	return glfwGetPhysicalDevicePresentationSupport(
+		instances[this],
+		reinterpret_cast<VkPhysicalDevice>(physicalDevice),
+		queueFamily);
+}
+
+void* Window::GetVulkanInstance() const
+{
+	return instances[this];
+}
+
+void* Window::GetVulkanSurface() const
+{
+	return surfaces[this];
 }
 
 bool Window::IsRawMouseInputSupported() const
@@ -612,14 +867,4 @@ void Window::SetCursor(Cursor& cursor)
 	glfwSetCursor(
 		reinterpret_cast<GLFWwindow*>(handle),
 		reinterpret_cast<GLFWcursor*>(cursor.GetHandle()));
-}
-
-int Window::CreateVulkanSurface(void* instance, const void* allocator, void* surfaceOut)
-{
-	return glfwCreateWindowSurface(
-		reinterpret_cast<VkInstance>(instance),
-		reinterpret_cast<GLFWwindow*>(handle),
-		reinterpret_cast<const VkAllocationCallbacks*>(allocator),
-		reinterpret_cast<VkSurfaceKHR*>(surfaceOut)
-		);
 }
