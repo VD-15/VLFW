@@ -4,7 +4,7 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 	message(FATAL_ERROR "In-source builds are not allowed, please conduct builds from within a separate build directory")
 endif()
 
-project(VLFW VERSION 0.1.1)
+project(VLFW VERSION 0.2.0)
 
 add_library(VLFW
     ${CMAKE_CURRENT_SOURCE_DIR}/src/VLFW.cpp
