@@ -199,6 +199,128 @@ Window* Window::GetCurrentContext()
 	}
 }
 
+void CheckValidationLayerSupport(const WindowHints& hints)
+{
+	// Check validation layer support
+	if (!hints.requiredValidationLayers.empty())
+	{
+		UInt layerCount = 0;
+		vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
+		std::vector<VkLayerProperties>layers(layerCount);
+		vkEnumerateInstanceLayerProperties(&layerCount, layers.data());
+
+		for (auto r = hints.requiredValidationLayers.cbegin();
+		     r != hints.requiredValidationLayers.cend();
+		     r++)
+		{
+			bool layerFound = false;
+
+			for (auto s = layers.cbegin(); s != layers.cend(); s++)
+			{
+				if (std::string(s->layerName) == *r)
+				{
+					layerFound = true;
+					break;
+				}
+			}
+
+			if (!layerFound)
+			{
+				throw std::runtime_error(
+					std::string("Required Vulkan validation layer is not supported: ") + *r);
+			}
+		}
+	}
+}
+
+std::vector<const char*> CheckExtensionSupport(const WindowHints& hints)
+{
+	UInt extCount;
+	const char** extNames = glfwGetRequiredInstanceExtensions(&extCount);
+
+	// Append GLFW instance extensions
+	std::vector<const char*> extensions(extCount);
+	for (UInt i = 0; i < extCount; i++)
+	{
+		extensions[i] = extNames[i];
+	}
+
+	// Append user-requested extensions
+	extensions.insert(
+		extensions.end(),
+		hints.requiredExtensions.begin(),
+		hints.requiredExtensions.end());
+
+	// Append VK_EXT_debug_utils
+	if (!hints.requiredValidationLayers.empty())
+	{
+		extensions.push_back("VK_EXT_debug_utils");
+	}
+
+	// Check extension support
+	vkEnumerateInstanceExtensionProperties(nullptr, &extCount, nullptr);
+	std::vector<VkExtensionProperties> supExt(extCount);
+	vkEnumerateInstanceExtensionProperties(nullptr, &extCount, supExt.data());
+
+	for (auto r = extensions.cbegin(); r != extensions.cend(); r++)
+	{
+		bool extFound = false;
+
+		for (auto s = supExt.cbegin(); s != supExt.cend(); s++)
+		{
+			if (std::string(s->extensionName) == *r)
+			{
+				extFound = true;
+				break;
+			}
+		}
+
+		if (!extFound)
+			throw std::runtime_error(std::string("Requested Vulkan extension is not supported: ") + *r);
+	}
+
+	return extensions;
+}
+
+VkInstance CreateVulkanInstance(const WindowHints& hints, const std::vector<const char*> extensions)
+{
+	VkApplicationInfo appInfo {};
+	appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+	appInfo.pApplicationName = hints.applicationName.c_str();
+	appInfo.applicationVersion = VK_MAKE_VERSION(hints.applicationVersionMajor,
+    	                                         hints.applicationVersionMinor,
+	                                             hints.applicationVersionPatch);
+	appInfo.pEngineName = "Valkyrie Engine (VLFW)";
+	appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
+	appInfo.apiVersion = VK_API_VERSION_1_2;
+
+	// Create vulkan instance
+	VkInstanceCreateInfo createInfo {};
+	createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+	createInfo.pApplicationInfo = &appInfo;
+	createInfo.enabledExtensionCount = extensions.size();
+	createInfo.ppEnabledExtensionNames = extensions.data();
+	createInfo.enabledLayerCount = hints.requiredValidationLayers.size();
+	createInfo.ppEnabledLayerNames = hints.requiredValidationLayers.data();
+
+	VkInstance instance = VK_NULL_HANDLE;
+
+	if (vkCreateInstance(
+			&createInfo,
+			reinterpret_cast<const VkAllocationCallbacks*>(hints.allocationCallbacks),
+			&instance) != VK_SUCCESS)
+	{
+		throw std::runtime_error("Failed to create vulkan instance");
+	}
+
+	return instance;
+}
+
+void CreateVulkanSurface()
+{
+
+}
+
 Window::Window(const WindowHints& hints, Window* share)
 {
 	// Set window hints
@@ -318,92 +440,9 @@ Window::Window(const WindowHints& hints, Window* share)
 		glfwSetScrollCallback(window,             ScrollCallback);
 	}
 
-	//TODO: Create vulkan instance
+	//Create vulkan instance
 	if (hints.contextAPI == ContextAPI::Vulkan)
 	{
-		VkApplicationInfo appInfo {};
-		appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
-		appInfo.pApplicationName = hints.applicationName.c_str();
-		appInfo.applicationVersion = VK_MAKE_VERSION(hints.applicationVersionMajor,
-		                                             hints.applicationVersionMinor,
-		                                             hints.applicationVersionPatch);
-		appInfo.pEngineName = "Valkyrie Engine (VLFW)";
-		appInfo.engineVersion = VK_MAKE_VERSION(1, 0, 0);
-		appInfo.apiVersion = VK_API_VERSION_1_2;
-
-		std::vector<const char*> extensions;
-		UInt extCount;
-		const char** extNames = glfwGetRequiredInstanceExtensions(&extCount);
-
-		// Append GLFW instance extensions
-		extensions.resize(extCount);
-		for (UInt i = 0; i < extCount; i++)
-		{
-			extensions[i] = extNames[i];
-		}
-
-		// Append user-requested extensions
-		extensions.insert(
-			extensions.end(),
-			hints.requiredExtensions.begin(),
-			hints.requiredExtensions.end());
-
-		// Check extension support
-		{
-			vkEnumerateInstanceExtensionProperties(nullptr, &extCount, nullptr);
-			std::vector<VkExtensionProperties> supExt(extCount);
-			vkEnumerateInstanceExtensionProperties(nullptr, &extCount, supExt.data());
-
-			for (auto r = extensions.cbegin(); r != extensions.cend(); r++)
-			{
-				bool extFound = false;
-
-				for (auto s = supExt.cbegin(); s != supExt.cend(); s++)
-				{
-					if (std::string(s->extensionName) == *r)
-					{
-						extFound = true;
-						break;
-					}
-				}
-
-				if (!extFound)
-					throw std::runtime_error(
-						std::string("Requested Vulkan extension is not supported: ") + *r);
-			}
-		}
-
-		// Check validation layer support
-		if (!hints.requiredValidationLayers.empty())
-		{
-			UInt layerCount = 0;
-			vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
-			std::vector<VkLayerProperties>layers(layerCount);
-			vkEnumerateInstanceLayerProperties(&layerCount, layers.data());
-
-			for (auto r = hints.requiredValidationLayers.cbegin();
-			     r != hints.requiredValidationLayers.cend();
-			     r++)
-			{
-				bool layerFound = false;
-
-				for (auto s = layers.cbegin(); s != layers.cend(); s++)
-				{
-					if (std::string(s->layerName) == *r)
-					{
-						layerFound = true;
-						break;
-					}
-				}
-
-				if (!layerFound)
-				{
-					throw std::runtime_error(
-						std::string("Required Vulkan validation layer is not supported: ") + *r);
-				}
-			}
-		}
-		
 		VkInstance instance = VK_NULL_HANDLE;
 
 		if (share)
@@ -413,22 +452,10 @@ Window::Window(const WindowHints& hints, Window* share)
 		}
 		else
 		{
-			// Create vulkan instance
-			VkInstanceCreateInfo createInfo {};
-			createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-			createInfo.pApplicationInfo = &appInfo;
-			createInfo.enabledExtensionCount = extensions.size();
-			createInfo.ppEnabledExtensionNames = extensions.data();
-			createInfo.enabledLayerCount = hints.requiredValidationLayers.size();
-			createInfo.ppEnabledLayerNames = hints.requiredValidationLayers.data();
-
-			if (vkCreateInstance(
-					&createInfo,
-					reinterpret_cast<const VkAllocationCallbacks*>(hints.allocationCallbacks),
-					&instance) != VK_SUCCESS)
-			{
-				throw std::runtime_error("Failed to create vulkan instance");
-			}
+			// Construct instance and do some checks
+			CheckValidationLayerSupport(hints);
+			auto extensions(CheckExtensionSupport(hints));
+			instance = CreateVulkanInstance(hints, extensions);
 		}
 
 		VkSurfaceKHR surface;
@@ -809,12 +836,18 @@ bool Window::GetVulkanPresentationSupport(void* physicalDevice, UInt queueFamily
 
 void* Window::GetVulkanInstance() const
 {
-	return instances[this];
+	if (contextAPI == ContextAPI::Vulkan)
+		return instances[this];
+	else
+		return nullptr;
 }
 
 void* Window::GetVulkanSurface() const
 {
-	return surfaces[this];
+	if (contextAPI == ContextAPI::Vulkan)
+		return surfaces[this];
+	else
+		return nullptr;
 }
 
 bool Window::IsRawMouseInputSupported() const
