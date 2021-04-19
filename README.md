@@ -179,7 +179,7 @@ WindowHints hints {};
 args.contextAPI = ContextAPI::Vulkan;
 ``` 
 
-From there, you can specify the instance extensions your application requires and the validation layers you want to enable. Some extensions like `VK_KHR_surface` and others required to present to the window are enabled automatically. If any validation layers are provided, the instance extension `VK_EXT_debug_utils` is also enabled automatically.
+From there, you can specify the instance extensions your application requires and the validation layers you want to enable. Some extensions like `VK_KHR_surface` and others required to present to the window are enabled automatically. If any validation layers are requested, the instance extension `VK_EXT_debug_utils` is also enabled automatically.
 
 ```cpp
 hints.requiredExtensions = {
@@ -197,8 +197,8 @@ Once the window has been created, the handles for the created instance and surfa
 ```cpp
 auto window = Component<Window>::Create(hints);
 
-VkSurfaceKHR surface = window->GetVulkanSurface();
-VkInstance instance = window->GetVulkanSurface();
+VkSurfaceKHR surface = reinterpret_cast<VkSurfaceKHR>(window->GetVulkanSurface());
+VkInstance instance = reinterpret_cast<VkInstance>(window->GetVulkanSurface());
 ```
 
 ## Limitations
